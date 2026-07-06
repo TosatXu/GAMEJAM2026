@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2073056029904686349}
   - component: {fileID: 8457646051553273110}
-  - component: {fileID: -35001350327434989}
   - component: {fileID: -113128839460036653}
+  - component: {fileID: 2061259198261758803}
   m_Layer: 0
   m_Name: Ingredient
   m_TagString: Untagged
@@ -94,18 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &-35001350327434989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2257967141943878154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecedee90a02056a499c1f510a7991407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DragnDrop
 --- !u!61 &-113128839460036653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,3 +140,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2061259198261758803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257967141943878154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b915e181572de04e88ed0095888487d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drag
+  canDrag: 1
