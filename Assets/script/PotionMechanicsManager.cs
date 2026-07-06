@@ -7,8 +7,13 @@ public class PotionMechanicsManager : MonoBehaviour
     public float requiredPercent = 30f;
     public float percentTolerance = 5f;
 
+    [Header("Other Systems")]
+    public TimingBar timingBar;
+
     [Header("State")]
     public bool hasCorrectIngredient;
+    public bool hasGoodFireTiming;
+    public bool potionReady;
 
     public void ReceiveIngredient(IngredientPiece piece)
     {
@@ -24,15 +29,12 @@ public class PotionMechanicsManager : MonoBehaviour
         {
             hasCorrectIngredient = true;
 
-            Debug.Log(
-                "Correct ingredient! " +
-                piece.ingredientName +
-                " " +
-                piece.ingredientPercent.ToString("0.0") +
-                "%"
-            );
+            Debug.Log("Correct ingredient. Start fire timing.");
 
-            Debug.Log("Next step: start fire timing bar.");
+            if (timingBar != null)
+            {
+                timingBar.StartTiming();
+            }
         }
         else
         {
@@ -49,6 +51,22 @@ public class PotionMechanicsManager : MonoBehaviour
                 piece.ingredientPercent.ToString("0.0") +
                 "%"
             );
+        }
+    }
+
+    public void ReceiveFireTimingResult(bool success)
+    {
+        hasGoodFireTiming = success;
+
+        if (hasCorrectIngredient && hasGoodFireTiming)
+        {
+            potionReady = true;
+            Debug.Log("Potion is ready!");
+        }
+        else
+        {
+            potionReady = false;
+            Debug.Log("Potion failed.");
         }
     }
 }
