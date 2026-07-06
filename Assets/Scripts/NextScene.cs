@@ -9,7 +9,7 @@ public class NextScene : MonoBehaviour
     public void sceneTransition ()
     {
         if (dialogue.GetComponent<DialogueBox>().dialogueNum >= 19) {
-            SceneManager.LoadScene("Scenes 1");
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
