@@ -1,20 +1,30 @@
-THE PARENT
+THE PARENT - Intro
+
+The Alchemist - Welcome, what is it that you need?
+
+The Parent - My daughter needs help. Her life was taken by a plague.
+
+The Parent - Help her, please. Bring my baby back to me.
+
+The Parent - She was an angel, the purest little angel. I want you to make her pure again.
 
 
 
-THE WIDOW
+THE WIDOW - Intro
 
-THE SERVANT
+The Alchemist - Welcome, what is it that you need?
 
-The Alchemist - Welcome to my shop, what is it you need?
 
-The Servant - It's my Master. He must've fallen down the stairs. He must've been drinking, you know? Drinking wine. It was his favourite, he drank it all of the time.
 
-The Alchemist - He was clumsy?
+THE SERVANT - Intro
 
-The Servant - No. Not at all. He was kind, a kind master.
+The Alchemist - Welcome, what is it that you need?
 
-The Servant - Please, give him a heart.
+The Servant - It is my Master. He must've fallen down the stairs. He must've been drinking wine. It was his favourite, he drank it all of the time.
+
+The Servant - He was kind, a kind master.
+
+The Servant - Could you give him a heart?
 
 The Alchemist - Don't worry, he won't remember a thing.
 
