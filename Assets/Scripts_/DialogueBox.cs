@@ -17,9 +17,13 @@ public class DialogueBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (encounterNum == 0)
+        if (Input.anyKeyDown)
         {
-            display.text = intro1[dialogueNum];
+            if (encounterNum == 0)
+            {
+                dialogueNum++;
+                display.text = intro1[dialogueNum];
+            }
         }
     }
 
