@@ -6,7 +6,7 @@ public class IngredientButton : MonoBehaviour
     public GameObject IngredientSpawner;
     public void spawnIngredient ()
     {
-        Instantiate(Ingredient, IngredientSpawner.transform.position, IngredientSpawner.transform.rotation, IngredientSpawner.transform);
+        Instantiate(Ingredient, IngredientSpawner.transform);
     }
     
     public void spawnCuttingBoard ()
