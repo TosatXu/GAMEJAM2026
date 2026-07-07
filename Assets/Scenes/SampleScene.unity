@@ -1252,7 +1252,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2714776190197604676, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_text
-      value: A powerful organic computer
+      value: Brain - A powerful organic computer
       objectReference: {fileID: 0}
     - target: {fileID: 4890879623660599909, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Pivot.x
