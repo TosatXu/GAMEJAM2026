@@ -88,11 +88,11 @@ public class Cauldron : MonoBehaviour
 
     void changeColour()
     {
-        if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality <= 30)
+        if (potionMechanicsManager.GetComponent<PotionMechanicsManager>().potionQuality <= 30)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = brown;
         }
-        else if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
+        else if (potionMechanicsManager.GetComponent<PotionMechanicsManager>().potionQuality >= 80)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = green;
         }
