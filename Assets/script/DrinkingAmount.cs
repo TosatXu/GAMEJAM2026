@@ -690,8 +690,35 @@ public class DrinkingAmount : MonoBehaviour
             (potionWorked ? "Alive" : "Failed")
         );
 
-        SetResultText(potionWorked ? aliveText : failedText);
-        ShowNextButton();
+        if (potionWorked)
+        {
+            SetResultText(aliveText);
+            ShowNextButton();
+        }
+        else
+        {
+            SetResultText(failedText);
+
+            GameOverManager gameOverManager = FindGameOverManager();
+            if (gameOverManager != null)
+            {
+                gameOverManager.Show(failedText);
+            }
+            else
+            {
+                Debug.LogWarning("Potion failed, but no GameOverManager was found in this scene.", this);
+            }
+        }
+    }
+
+    GameOverManager FindGameOverManager()
+    {
+        if (GameOverManager.Instance != null)
+        {
+            return GameOverManager.Instance;
+        }
+
+        return FindFirstObjectByType<GameOverManager>(FindObjectsInactive.Include);
     }
 
     bool DidPotionWork(bool goodDrinkingAmount)
