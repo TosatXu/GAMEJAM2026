@@ -10,6 +10,11 @@ public class Cauldron : MonoBehaviour
     {
         BoxCollider2D cauldronCollider = GetComponent<BoxCollider2D>();
         cauldronCollider.isTrigger = true;
+
+        if (potionMechanicsManager == null)
+        {
+            potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -38,9 +43,18 @@ public class Cauldron : MonoBehaviour
 
     void PutPieceIntoCauldron(IngredientPiece piece)
     {
+        if (potionMechanicsManager == null)
+        {
+            potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
+        }
+
         if (potionMechanicsManager != null)
         {
             potionMechanicsManager.ReceiveIngredient(piece);
+        }
+        else
+        {
+            Debug.LogWarning("No PotionMechanicsManager found for cauldron.", this);
         }
 
         if (destroyPieceAfterDrop)

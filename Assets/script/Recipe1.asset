@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99b7cd8fa4f9819448a2b6b83e36c10b, type: 3}
-  m_Name: Recipe_Brain
+  m_Name: Recipe1
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  requiredBodyPartName: brain
+  requiredBodyPartName: liver
   requiredBottleName: aquaregia
   requiredPlantName: dreamlily
   requiredDrinkPercent: 40

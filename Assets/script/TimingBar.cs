@@ -19,6 +19,11 @@ public class TimingBar : MonoBehaviour
 
     void Start()
     {
+        if (potionMechanicsManager == null)
+        {
+            potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
+        }
+
         gameObject.SetActive(false);
     }
 
@@ -50,6 +55,11 @@ public class TimingBar : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        if (potionMechanicsManager == null)
+        {
+            potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
+        }
+
         isPlaying = true;
         timer = 0f;
         currentPercent = 0f;
@@ -73,6 +83,10 @@ public class TimingBar : MonoBehaviour
         if (potionMechanicsManager != null)
         {
             potionMechanicsManager.ReceiveFireTimingResult(success);
+        }
+        else
+        {
+            Debug.LogWarning("No PotionMechanicsManager found for timing bar.", this);
         }
     }
 }
