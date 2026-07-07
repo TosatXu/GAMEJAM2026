@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class DrinkingAmount : MonoBehaviour
 {
-    public RecipeData recipeData;
-
     public Transform barFill;
     public float fillSpeed = 40f;
+    public float requiredDrinkPercent = 60f;
+    public float drinkTolerance = 5f;
 
     float currentDrinkPercent;
     bool isDrinking;
@@ -15,7 +15,7 @@ public class DrinkingAmount : MonoBehaviour
     {
         if (RecipeRuntimeData.Instance != null && RecipeRuntimeData.Instance.currentRecipe != null)
         {
-            recipeData = RecipeRuntimeData.Instance.currentRecipe;
+            requiredDrinkPercent = RecipeRuntimeData.Instance.currentRecipe.requiredDrinkPercent;
         }
 
         currentDrinkPercent = 0f;
@@ -24,7 +24,7 @@ public class DrinkingAmount : MonoBehaviour
 
     void Update()
     {
-        if (hasFinished || recipeData == null)
+        if (hasFinished)
         {
             return;
         }
@@ -62,12 +62,11 @@ public class DrinkingAmount : MonoBehaviour
 
     void CheckDrinkAmount()
     {
-        bool success = Mathf.Abs(currentDrinkPercent - recipeData.requiredDrinkPercent)
-            <= recipeData.drinkTolerance;
+        bool success = Mathf.Abs(currentDrinkPercent - requiredDrinkPercent) <= drinkTolerance;
 
         Debug.Log(
             "Drink target: " +
-            recipeData.requiredDrinkPercent.ToString("0") +
+            requiredDrinkPercent.ToString("0") +
             "% | Actual: " +
             currentDrinkPercent.ToString("0.0") +
             "% | " +

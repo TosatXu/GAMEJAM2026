@@ -1,13 +1,20 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    static readonly string[] BodyPartNames = { "brain", "liver", "heart", "eyeball", "eye", "tongue" };
+    static readonly string[] BottleNames = { "water", "aquaregia", "oilofvitriol", "balsam", "bottle" };
+    static readonly string[] PlantNames = { "baneberry", "nettle", "dreamlily", "ghostorchid", "citrine", "tear", "tears", "fang", "root", "flower", "herb", "plant" };
+
     public GameObject Ingredient;
     public GameObject IngredientSpawner;
     public bool matchButtonSize = true;
     public float spawnedSizeMultiplier = 1f;
+    public float defaultIngredientPercent = 30f;
+    public IngredientType ingredientType = IngredientType.Unknown;
 
     GameObject spawnedIngredient;
     bool spawnedFromPointer;
@@ -85,6 +92,174 @@ public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             MatchSpawnedSizeToButton(newIngredient, spawnedRenderer, buttonImage);
         }
+
+        SetupIngredientData(newIngredient, buttonImage);
+        SetupPhysicsForCauldron(newIngredient);
+    }
+
+    void SetupIngredientData(GameObject newIngredient, Image buttonImage)
+    {
+        IngredientPiece ingredientPiece = newIngredient.GetComponent<IngredientPiece>();
+        if (ingredientPiece == null)
+        {
+            ingredientPiece = newIngredient.AddComponent<IngredientPiece>();
+        }
+
+        string ingredientName = GetIngredientName(buttonImage);
+        IngredientType detectedType = GetIngredientType(ingredientName);
+        float ingredientPercent = GetIngredientPercent(ingredientName, detectedType);
+
+        ingredientPiece.SetIngredientData(ingredientName, detectedType, ingredientPercent);
+    }
+
+    string GetIngredientName(Image buttonImage)
+    {
+        TextMeshProUGUI tmpText = GetComponentInChildren<TextMeshProUGUI>(true);
+        if (tmpText != null)
+        {
+            string textName = NormalizeIngredientName(tmpText.text);
+            if (!IsIgnoredTextName(textName))
+            {
+                return textName;
+            }
+
+            string objectName = NormalizeIngredientName(tmpText.name);
+            if (!IsIgnoredTextName(objectName))
+            {
+                return objectName;
+            }
+        }
+
+        if (buttonImage != null && buttonImage.sprite != null)
+        {
+            string spriteName = buttonImage.sprite.name;
+            int underscoreIndex = spriteName.IndexOf('_');
+
+            if (underscoreIndex > 0)
+            {
+                spriteName = spriteName.Substring(0, underscoreIndex);
+            }
+
+            return NormalizeIngredientName(spriteName);
+        }
+
+        string fallbackName = name.Replace("IngredientButton", "").Replace("Button", "");
+        return NormalizeIngredientName(fallbackName);
+    }
+
+    bool IsIgnoredTextName(string textName)
+    {
+        return string.IsNullOrEmpty(textName) ||
+            textName == "text" ||
+            textName == "texttmp" ||
+            textName == "newtext";
+    }
+
+    IngredientType GetIngredientType(string ingredientName)
+    {
+        if (ingredientType != IngredientType.Unknown)
+        {
+            return ingredientType;
+        }
+
+        if (NameIsInList(ingredientName, BodyPartNames))
+        {
+            return IngredientType.BodyPart;
+        }
+
+        if (NameIsInList(ingredientName, BottleNames))
+        {
+            return IngredientType.Bottle;
+        }
+
+        if (NameIsInList(ingredientName, PlantNames))
+        {
+            return IngredientType.Plant;
+        }
+
+        Debug.LogWarning("Cannot detect ingredient type for " + ingredientName + ". Set ingredientType on the IngredientButton if needed.", this);
+        return IngredientType.Unknown;
+    }
+
+    float GetIngredientPercent(string ingredientName, IngredientType detectedType)
+    {
+        return defaultIngredientPercent;
+    }
+
+    bool NameIsInList(string ingredientName, string[] nameList)
+    {
+        for (int i = 0; i < nameList.Length; i++)
+        {
+            if (ingredientName == nameList[i] ||
+                ingredientName.Contains(nameList[i]) ||
+                nameList[i].Contains(ingredientName))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    string NormalizeIngredientName(string rawName)
+    {
+        if (string.IsNullOrWhiteSpace(rawName))
+        {
+            return "";
+        }
+
+        string firstPart = rawName.Trim();
+        int lineBreakIndex = firstPart.IndexOf('\n');
+        if (lineBreakIndex > 0)
+        {
+            firstPart = firstPart.Substring(0, lineBreakIndex);
+        }
+
+        int dashIndex = firstPart.IndexOf('-');
+        if (dashIndex > 0)
+        {
+            firstPart = firstPart.Substring(0, dashIndex);
+        }
+
+        int colonIndex = firstPart.IndexOf(':');
+        if (colonIndex > 0)
+        {
+            firstPart = firstPart.Substring(0, colonIndex);
+        }
+
+        string result = "";
+        string lowerName = firstPart.ToLowerInvariant();
+
+        for (int i = 0; i < lowerName.Length; i++)
+        {
+            char currentChar = lowerName[i];
+            if (char.IsLetterOrDigit(currentChar))
+            {
+                result += currentChar;
+            }
+        }
+
+        return result;
+    }
+
+    void SetupPhysicsForCauldron(GameObject newIngredient)
+    {
+        Collider2D ingredientCollider = newIngredient.GetComponent<Collider2D>();
+        if (ingredientCollider != null)
+        {
+            ingredientCollider.isTrigger = true;
+        }
+
+        Rigidbody2D rigidbody2D = newIngredient.GetComponent<Rigidbody2D>();
+        if (rigidbody2D == null)
+        {
+            rigidbody2D = newIngredient.AddComponent<Rigidbody2D>();
+        }
+
+        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        rigidbody2D.gravityScale = 0f;
+        rigidbody2D.linearVelocity = Vector2.zero;
+        rigidbody2D.angularVelocity = 0f;
     }
 
     void MatchSpawnedSizeToButton(GameObject newIngredient, SpriteRenderer spawnedRenderer, Image buttonImage)
@@ -174,3 +349,6 @@ public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     }
 }
+
+
+
