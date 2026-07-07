@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b7cd8fa4f9819448a2b6b83e36c10b, type: 3}
   m_Name: Recipe_Liver
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  requiredIngredientName: Liver
-  requiredIngredientPercent: 30
+  requiredIngredientName: liver
+  requiredIngredientPercent: 45
   ingredientTolerance: 5
-  requiredDrinkPercent: 60
+  requiredDrinkPercent: 70
   drinkTolerance: 5
