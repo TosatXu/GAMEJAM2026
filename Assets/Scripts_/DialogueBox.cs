@@ -23,7 +23,7 @@ public class DialogueBox : MonoBehaviour
     {
         PlayerPrefs.SetInt("encounterNum", PlayerPrefs.GetInt("encounterNum") + 1);
         encounterCounter = PlayerPrefs.GetInt("encounterNum") % 3;
-
+        PlayerPrefs.SetInt("encounterNum", encounterCounter);
 
     }
 
