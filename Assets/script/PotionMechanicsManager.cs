@@ -20,6 +20,7 @@ public class PotionMechanicsManager : MonoBehaviour
 
     public RecipeDisplayUI recipeDisplayUI;
     public RecipeText recipeText;
+    public CauldronVisual cauldronVisual;
 
     [Header("Received Ingredients")]
     public bool hasBodyPart;
@@ -136,6 +137,7 @@ public class PotionMechanicsManager : MonoBehaviour
         }
 
         SetupTimingBar();
+        SetupCauldronVisual();
         SetupNextButton();
         UpdateRecipeDisplay();
 
@@ -360,6 +362,11 @@ public class PotionMechanicsManager : MonoBehaviour
         potionQuality = 100f;
         hasStartedTiming = false;
         hasFireTimingResult = false;
+        SetupCauldronVisual();
+        if (cauldronVisual != null)
+        {
+            cauldronVisual.ShowDefault();
+        }
 
         if (nextButton != null)
         {
@@ -481,6 +488,7 @@ public class PotionMechanicsManager : MonoBehaviour
         UpdatePotionQuality();
         UpdateRecipeDisplay();
         SavePotionResultToRuntime();
+        UpdateCauldronVisual();
 
         if (!potionReady)
         {
@@ -532,6 +540,33 @@ public class PotionMechanicsManager : MonoBehaviour
         }
 
         potionQuality = Mathf.Clamp(quality, 0f, 100f);
+    }
+
+    void SetupCauldronVisual()
+    {
+        if (cauldronVisual == null)
+        {
+            cauldronVisual = FindFirstObjectByType<CauldronVisual>(FindObjectsInactive.Include);
+        }
+    }
+
+    void UpdateCauldronVisual()
+    {
+        SetupCauldronVisual();
+
+        if (cauldronVisual == null)
+        {
+            return;
+        }
+
+        if (hasCorrectIngredient && hasGoodFireTiming)
+        {
+            cauldronVisual.ShowVitriol();
+        }
+        else
+        {
+            cauldronVisual.ShowFailed();
+        }
     }
 
     bool NamesMatch(string firstName, string secondName)

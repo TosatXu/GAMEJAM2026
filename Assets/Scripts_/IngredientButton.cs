@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     static readonly string[] BodyPartNames = { "brain", "liver", "heart", "eyeball", "eye", "tongue" };
-    static readonly string[] BottleNames = { "water", "aquaregia", "oilofvitriol", "balsam", "bottle" };
-    static readonly string[] PlantNames = { "baneberry", "nettle", "dreamlily", "ghostorchid", "citrine", "tear", "tears", "fang", "root", "flower", "herb", "plant" };
+    static readonly string[] BottleNames = { "water", "aquaregia", "oilofvitriol", "balsam", "bottle", "saltedtear", "saltedtears", "tear", "tears" };
+    static readonly string[] PlantNames = { "baneberry", "nettle", "dreamlily", "ghostorchid", "citrine", "fang", "root", "flower", "herb", "plant" };
 
     public GameObject Ingredient;
     public GameObject IngredientSpawner;
