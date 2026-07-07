@@ -16,7 +16,7 @@ public class DialogueBox : MonoBehaviour
 
     private void Start()
     {
-        if (!(PlayerPrefs.GetInt("encounterNum") >= 0))
+        if (!PlayerPrefs.HasKey("encounterNum"))
         {
             PlayerPrefs.SetInt("encounterNum", -1);
         }

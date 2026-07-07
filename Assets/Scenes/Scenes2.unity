@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.7671, y: 0.7767}
+  m_AnchoredPosition: {x: 7.7671, y: -1.6}
   m_SizeDelta: {x: 153.3975, y: 191.3608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141228816
@@ -172,6 +172,7 @@ MonoBehaviour:
   recipe1: ' 1 x Liver <br> 1 x ?Liquid <br> 1 x ?Material <br> 1 x Dreamlily'
   recipe2: ' 1 x ?Organ <br> 1 x Salted Tears <br> 1 x Bat Fang'
   recipe3: ' 1 x Heart <br> 1 x Aqua Regia <br> 1 x Baneberry <br> 1 x ?Material '
+  showProgress: 1
 --- !u!114 &141228817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +220,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 14.3
+  m_fontSizeBase: 14.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -258,7 +259,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 29.382164, y: 32.380413, z: 28.182934, w: 25.7844}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -400,7 +401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 323.87622, y: 117.278564}
+  m_AnchoredPosition: {x: 317.9, y: 117.278564}
   m_SizeDelta: {x: -686.87646, y: -274.66406}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035453319
@@ -832,9 +833,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8503c5b8c7ceb4695b5e0739379eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinkingAmount
-  recipeData: {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
   barFill: {fileID: 2069279080}
   fillSpeed: 40
+  requiredDrinkPercent: 60
+  drinkTolerance: 5
+  nextButton: {fileID: 0}
+  counterSceneName: Counter
+  nextButtonPosition: {x: -150, y: 40}
+  nextButtonSize: {x: 160, y: 30}
+  resultText: {fileID: 0}
+  waitingText: 
+  aliveText: hes alive!
+  failedText: it did not work well.
+  minimumPotionQualityToRevive: 100
 --- !u!4 &1390245434
 Transform:
   m_ObjectHideFlags: 0

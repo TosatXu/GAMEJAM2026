@@ -2109,9 +2109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeRandomizer
   possibleRecipes:
-  - {fileID: 11400000, guid: 9fb2299f3b6b8754b8a7b6aaa65cfc4d, type: 2}
-  - {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
-  - {fileID: 11400000, guid: 9d03e15c145757b44955ecca6aff0d8d, type: 2}
+  - {fileID: 11400000, guid: 621ba93a9d137254cb88b869a2b399cf, type: 2}
+  - {fileID: 11400000, guid: 6e5567eb2515be6459c2d69436fb00c1, type: 2}
+  - {fileID: 11400000, guid: a43dc735fa6b35e4aa84965ae4e621de, type: 2}
   potionMechanicsManager: {fileID: 69999305}
 --- !u!4 &1678711156
 Transform:

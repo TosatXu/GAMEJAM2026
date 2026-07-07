@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b7cd8fa4f9819448a2b6b83e36c10b, type: 3}
   m_Name: Recipe3
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
-  requiredBodyPartName: liver
+  requiredBodyPartName: brain
   requiredBottleName: oilofvitriol
   requiredPlantName: nettle
+  requiredDrinkPercent: 60

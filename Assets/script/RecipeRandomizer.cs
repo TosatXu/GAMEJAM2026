@@ -7,10 +7,15 @@ public class RecipeRandomizer : MonoBehaviour
 
     void Start()
     {
-        PickRandomRecipe();
+        PickRecipeForCurrentEncounter();
     }
 
     public void PickRandomRecipe()
+    {
+        PickRecipeForCurrentEncounter();
+    }
+
+    public void PickRecipeForCurrentEncounter()
     {
         if (possibleRecipes == null || possibleRecipes.Length == 0)
         {
@@ -18,8 +23,16 @@ public class RecipeRandomizer : MonoBehaviour
             return;
         }
 
-        int randomIndex = Random.Range(0, possibleRecipes.Length);
-        RecipeData selectedRecipe = possibleRecipes[randomIndex];
+        int encounterNumber = PlayerPrefs.GetInt("encounterNum", 0);
+        int recipeCount = Mathf.Min(possibleRecipes.Length, 3);
+        int recipeIndex = GetPositiveModulo(encounterNumber, recipeCount);
+        RecipeData selectedRecipe = possibleRecipes[recipeIndex];
+
+        if (selectedRecipe == null)
+        {
+            Debug.LogWarning("Selected recipe slot is empty: " + recipeIndex, this);
+            return;
+        }
 
         RecipeRuntimeData runtimeData = RecipeRuntimeData.Instance;
 
@@ -33,6 +46,16 @@ public class RecipeRandomizer : MonoBehaviour
             potionMechanicsManager.SetRecipe(selectedRecipe);
         }
 
-        Debug.Log("Selected recipe: " + selectedRecipe.name);
+        Debug.Log(
+            "Selected recipe for NPC " +
+            (recipeIndex + 1) +
+            ": " +
+            selectedRecipe.name
+        );
+    }
+
+    int GetPositiveModulo(int value, int modulo)
+    {
+        return ((value % modulo) + modulo) % modulo;
     }
 }

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
@@ -379,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: -2003186663063955676, guid: 5bfd4da6c7a014548aae6bfa651887ce, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f03e1fc825d43894e8775e17c033b7ed, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeRuntimeData
   currentRecipe: {fileID: 0}
   lastPotionQuality: 100
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2816d455a488c694fb9b805c6c94aa3d, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeText
   recipe1: ' 1 x Liver <br> 1 x ?Liquid <br> 1 x ?Material <br> 1 x Dreamlily'
   recipe2: ' 1 x ?Organ <br> 1 x Salted Tears <br> 1 x Bat Fang'
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
@@ -957,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: -3577352129555568530, guid: f82e239e60bc39a42b257276d8707a58, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1340,7 +1340,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
@@ -1385,9 +1385,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 463197119}
-  - component: {fileID: 463197122}
-  - component: {fileID: 463197121}
   - component: {fileID: 463197120}
   m_Layer: 5
   m_Name: Scroll View
@@ -1396,11 +1393,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &463197119
+--- !u!224 &463197119 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
   m_PrefabInstance: {fileID: 2150427441578128842}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &463197120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463197118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,8 +1450,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -1572,7 +1584,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -1615,7 +1627,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument:
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &702143216
@@ -1628,7 +1640,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1673,7 +1685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 348, y: -171}
+  m_AnchoredPosition: {x: 293, y: -137}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &722924994
@@ -1778,7 +1790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 8509550459451208454, guid: 79db34a0bfd3aed4e998f722d70d098d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1822,7 +1834,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1856569457}
-  m_Father: {fileID: 463197119}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1839,7 +1851,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
   m_ShowMaskGraphic: 0
 --- !u!114 &771250000
@@ -1852,7 +1864,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1909,7 +1921,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2001,7 +2013,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
@@ -2140,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: -3395856866206217572, guid: 6ea78210a3c5a1348a364a2914635783, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2230,7 +2242,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2424,7 +2436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 8658351832292309105, guid: c750c7b2efc89de48925ea8e0a8d1f50, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2460,7 +2472,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2552,7 +2564,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
   m_MinWidth: -1
@@ -2589,11 +2601,17 @@ RectTransform:
   m_AnchoredPosition: {x: 135, y: -188}
   m_SizeDelta: {x: 234, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!224 &1338245917 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4890879623660599909, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
-  m_PrefabInstance: {fileID: 193696484}
+--- !u!114 &1303648323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 581069748485028242, guid: 5e02a191411776344901093c203c3962, type: 3}
+  m_PrefabInstance: {fileID: 6507265380711981827}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2816d455a488c694fb9b805c6c94aa3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeText
 --- !u!1 &1388484355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,9 +2642,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 980518025}
-  m_Father: {fileID: 463197119}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2643,7 +2660,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Scrollbar
   m_Navigation:
     m_Mode: 3
@@ -2673,8 +2690,8 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2111297714}
-  m_HandleRect: {fileID: 2111297713}
+  m_TargetGraphic: {fileID: 1388484358}
+  m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_Value: 0
   m_Size: 1
@@ -2692,7 +2709,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2747,7 +2764,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f992d1415f5d94f9d0617884e251f2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimingBar
   potionMechanicsManager: {fileID: 0}
   leftPoint: {fileID: 2071273132}
@@ -3079,12 +3096,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88bd17da3f0cf1249b313d75572a4d20, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeRandomizer
   possibleRecipes:
-  - {fileID: 11400000, guid: 9fb2299f3b6b8754b8a7b6aaa65cfc4d, type: 2}
-  - {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
-  - {fileID: 11400000, guid: 9d03e15c145757b44955ecca6aff0d8d, type: 2}
+  - {fileID: 11400000, guid: 621ba93a9d137254cb88b869a2b399cf, type: 2}
+  - {fileID: 11400000, guid: 6e5567eb2515be6459c2d69436fb00c1, type: 2}
+  - {fileID: 11400000, guid: a43dc735fa6b35e4aa84965ae4e621de, type: 2}
   potionMechanicsManager: {fileID: 2009802557}
 --- !u!4 &1754175080
 Transform:
@@ -3130,7 +3147,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31e9379b7441ab645846b244581a4e5b, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cauldron
   potionMechanicsManager: {fileID: 0}
   destroyPieceAfterDrop: 1
@@ -3168,7 +3185,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.030898094, y: 1.8692929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3178,7 +3195,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 8.3844795, y: 4.5287066}
   m_EdgeRadius: 0
 --- !u!212 &1757989542
 SpriteRenderer:
@@ -3357,7 +3374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9152520544049412646, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: -5776016265477701538, guid: 21c44b36fd29e654e83754b8c0aa0734, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3399,13 +3416,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d00d60488b82da4aa4534526787e4c0, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeDisplayUI
   panel: {fileID: 1835899330}
   titleText: {fileID: 44562295}
   bodyPartText: {fileID: 304198350}
   bottleText: {fileID: 345225719}
   plantText: {fileID: 792200106}
+  drinkText: {fileID: 1302049215}
+  showDrinkPercent: 0
   panelSize: {x: 270, y: 210}
   panelOffset: {x: -24, y: 20}
   panelColor: {r: 0.11, g: 0.1, b: 0.09, a: 0.88}
@@ -3445,7 +3464,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
     m_Left: 18
@@ -3471,7 +3490,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.11, g: 0.1, b: 0.09, a: 0.88}
@@ -3527,22 +3546,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 519501046}
-  - {fileID: 1338245917}
-  - {fileID: 1908479472}
-  - {fileID: 468482377}
-  - {fileID: 1432421645}
-  - {fileID: 1475023854}
   - {fileID: 722924995}
   - {fileID: 78738984}
-  - {fileID: 1084773385}
-  - {fileID: 2085624368}
   - {fileID: 299359209}
-  - {fileID: 2015858526}
-  - {fileID: 1450005817}
   - {fileID: 1830816085}
-  - {fileID: 994728564}
   - {fileID: 903853751}
+  - {fileID: 2056803297}
   m_Father: {fileID: 771249998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -3669,20 +3678,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba3ed5570ff2d9f4c9fd39d28d1fd573, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionMechanicsManager
   recipeData: {fileID: 0}
   timingBar: {fileID: 1411911951}
   nextButton: {fileID: 702143214}
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
-  recipeText: {fileID: 0}
+  recipeText: {fileID: 1303648323}
   hasBodyPart: 0
   hasBottle: 0
   hasPlant: 0
-  receivedBodyPartName:
-  receivedBottleName:
-  receivedPlantName:
+  receivedBodyPartName: 
+  receivedBottleName: 
+  receivedPlantName: 
   hasCorrectIngredient: 0
   hasCorrectBodyPart: 0
   hasCorrectBottle: 0
@@ -3699,12 +3708,17 @@ Transform:
   m_GameObject: {fileID: 2009802556}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.83637, y: -0.38906, z: 0}
+  m_LocalPosition: {x: -0.17, y: -0.38906, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &2056803297 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4890879623660599909, guid: 0d53dd5037702384da2bfb71328c7edb, type: 3}
+  m_PrefabInstance: {fileID: 1258567794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2071273131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,7 +3760,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1413424711202506280, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_HorizontalScrollbar
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2615278791967111316, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3844,6 +3858,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scroll View
       objectReference: {fileID: 0}
+    - target: {fileID: 5487091017683862239, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487091017683862239, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487091017683862239, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3938,6 +3964,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_text
+      value: 'Recipe
+
+
+        [ ] 1 x Body: ???
+
+        [ ] 1 x Bottle: ???
+
+        [
+        ] 1 x Plant: ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_fontSize
+      value: 17.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_margin.w
       value: 5.300201
       objectReference: {fileID: 0}
@@ -3952,6 +3994,14 @@ PrefabInstance:
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_margin.z
       value: 10.60038
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 17.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3447719555133167084, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_Name
@@ -4104,6 +4154,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 463197120}
   - {fileID: 519420032}
   - {fileID: 286939588}
   - {fileID: 93943428}
@@ -4113,6 +4164,7 @@ SceneRoots:
   - {fileID: 1754175080}
   - {fileID: 174050301}
   - {fileID: 1411911952}
-  - {fileID: 702143218}
   - {fileID: 262086509}
   - {fileID: 1696966555}
+  - {fileID: 771249998}
+  - {fileID: 1388484356}
