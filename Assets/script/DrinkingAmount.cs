@@ -20,6 +20,9 @@ public class DrinkingAmount : MonoBehaviour
     public Vector2 nextButtonPosition = new Vector2(-150f, 40f);
     public Vector2 nextButtonSize = new Vector2(160f, 30f);
 
+    [Header("Pour Effect")]
+    public ParticleSystem pourEffect;
+
     [Header("Vertical Drink Bar")]
     public RecipeData previewRecipeData;
     public Transform barBack;
@@ -117,6 +120,7 @@ public class DrinkingAmount : MonoBehaviour
         SetupDrinkBar();
         currentDrinkPercent = 0f;
         UpdateBar();
+        StopPourEffect(true);
     }
 
     void Update()
@@ -129,6 +133,7 @@ public class DrinkingAmount : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isDrinking = true;
+            PlayPourEffect();
         }
 
         if (Input.GetMouseButton(0) && isDrinking)
@@ -142,8 +147,38 @@ public class DrinkingAmount : MonoBehaviour
         {
             isDrinking = false;
             hasFinished = true;
+            StopPourEffect(false);
+
             CheckDrinkAmount();
         }
+    }
+
+
+    void OnDisable()
+    {
+        StopPourEffect(true);
+    }
+
+    void PlayPourEffect()
+    {
+        if (pourEffect != null && !pourEffect.isPlaying)
+        {
+            pourEffect.Play();
+        }
+    }
+
+    void StopPourEffect(bool clearParticles)
+    {
+        if (pourEffect == null)
+        {
+            return;
+        }
+
+        ParticleSystemStopBehavior stopBehavior = clearParticles
+            ? ParticleSystemStopBehavior.StopEmittingAndClear
+            : ParticleSystemStopBehavior.StopEmitting;
+
+        pourEffect.Stop(true, stopBehavior);
     }
 
     void RefreshDrinkBarPreview()
