@@ -6308,11 +6308,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: Brain
+        [ ] 1 x Organ: Liver
 
-        [ ] 1 x Liquid: Tears
+        [ ] 1 x Liquid: Water
 
-        [ ] 1 x Plant: Ghost Orchid'
+        [
+        ] 1 x Plant: Dream Lily'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize
