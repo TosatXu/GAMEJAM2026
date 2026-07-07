@@ -1005,6 +1005,7 @@ RectTransform:
   m_Children:
   - {fileID: 1308820411}
   - {fileID: 1872162966}
+  - {fileID: 1035453318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1119,6 +1120,10 @@ PrefabInstance:
     - target: {fileID: 3447719555133167084, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447719555133167084, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
