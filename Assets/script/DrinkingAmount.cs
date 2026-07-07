@@ -2,7 +2,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+[ExecuteAlways]
 public class DrinkingAmount : MonoBehaviour
 {
     public Transform barFill;
@@ -13,6 +17,20 @@ public class DrinkingAmount : MonoBehaviour
     public string counterSceneName = "Counter";
     public Vector2 nextButtonPosition = new Vector2(-150f, 40f);
     public Vector2 nextButtonSize = new Vector2(160f, 30f);
+
+    [Header("Vertical Drink Bar")]
+    public RecipeData previewRecipeData;
+    public Transform barBack;
+    public Transform targetLine;
+    public bool useVerticalBar = true;
+    public float barBottomLocalY = -1.5f;
+    public float verticalBarHeight = 3f;
+    public float verticalBarWidth = 0.35f;
+    public float targetLineWidth = 0.8f;
+    public float targetLineThickness = 0.06f;
+    public Color barBackColor = new Color(0.12f, 0.12f, 0.12f, 1f);
+    public Color barFillColor = new Color(0.25f, 0.9f, 0.75f, 1f);
+    public Color targetLineColor = new Color(1f, 0.2f, 0.15f, 1f);
 
     [Header("Result Text")]
     public TextMeshProUGUI resultText;
@@ -25,14 +43,61 @@ public class DrinkingAmount : MonoBehaviour
     bool isDrinking;
     bool hasFinished;
 
+    void OnEnable()
+    {
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+        }
+    }
+
+    void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorApplication.delayCall -= DelayedRefreshDrinkBarPreview;
+            EditorApplication.delayCall += DelayedRefreshDrinkBarPreview;
+        }
+#else
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+        }
+#endif
+    }
+
+#if UNITY_EDITOR
+    void DelayedRefreshDrinkBarPreview()
+    {
+        if (this == null || Application.isPlaying)
+        {
+            return;
+        }
+
+        RefreshDrinkBarPreview();
+    }
+#endif
+
     void Awake()
     {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
         SetupResultText();
         SetResultText(waitingText);
     }
 
     void Start()
     {
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+            return;
+        }
+
         SetupResultText();
         SetResultText(waitingText);
         SetupNextButton();
@@ -42,14 +107,19 @@ public class DrinkingAmount : MonoBehaviour
         {
             requiredDrinkPercent = RecipeRuntimeData.Instance.currentRecipe.requiredDrinkPercent;
         }
+        else
+        {
+            ApplyPreviewRecipePercent();
+        }
 
+        SetupDrinkBar();
         currentDrinkPercent = 0f;
         UpdateBar();
     }
 
     void Update()
     {
-        if (hasFinished)
+        if (!Application.isPlaying || hasFinished)
         {
             return;
         }
@@ -71,6 +141,22 @@ public class DrinkingAmount : MonoBehaviour
             isDrinking = false;
             hasFinished = true;
             CheckDrinkAmount();
+        }
+    }
+
+    void RefreshDrinkBarPreview()
+    {
+        ApplyPreviewRecipePercent();
+        SetupDrinkBar();
+        currentDrinkPercent = 0f;
+        UpdateBar();
+    }
+
+    void ApplyPreviewRecipePercent()
+    {
+        if (previewRecipeData != null)
+        {
+            requiredDrinkPercent = previewRecipeData.requiredDrinkPercent;
         }
     }
 
@@ -119,6 +205,141 @@ public class DrinkingAmount : MonoBehaviour
         if (resultText != null)
         {
             resultText.text = message;
+        }
+    }
+
+    void SetupDrinkBar()
+    {
+        if (barFill == null)
+        {
+            barFill = FindChildByName(transform, "BarFill");
+        }
+
+        if (barBack == null)
+        {
+            barBack = FindChildByName(transform, "BarBack");
+        }
+
+        if (!useVerticalBar)
+        {
+            UpdateTargetLine();
+            return;
+        }
+
+        SetupBarPart(barBack, verticalBarWidth, verticalBarHeight, barBottomLocalY + verticalBarHeight * 0.5f, barBackColor);
+        SetupBarPart(barFill, verticalBarWidth, 0f, barBottomLocalY, barFillColor);
+        SetupTargetLine();
+    }
+
+    Transform FindChildByName(Transform root, string childName)
+    {
+        for (int i = 0; i < root.childCount; i++)
+        {
+            Transform child = root.GetChild(i);
+            if (child.name == childName)
+            {
+                return child;
+            }
+        }
+
+        return null;
+    }
+
+    void SetupBarPart(Transform barPart, float width, float height, float localY, Color color)
+    {
+        if (barPart == null)
+        {
+            return;
+        }
+
+        barPart.localScale = new Vector3(width, height, barPart.localScale.z);
+        barPart.localPosition = new Vector3(0f, localY, barPart.localPosition.z);
+
+        SpriteRenderer renderer = barPart.GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.color = color;
+
+            if (barPart == barFill && barBack != null && barBack.TryGetComponent(out SpriteRenderer backRenderer))
+            {
+                renderer.sortingLayerID = backRenderer.sortingLayerID;
+                renderer.sortingOrder = backRenderer.sortingOrder + 1;
+            }
+        }
+    }
+
+    void SetupTargetLine()
+    {
+        if (targetLine == null)
+        {
+            targetLine = FindChildByName(transform, "TargetLine");
+        }
+
+        if (targetLine == null)
+        {
+            targetLine = CreateTargetLine();
+        }
+
+        UpdateTargetLine();
+    }
+
+    Transform CreateTargetLine()
+    {
+        GameObject targetLineObject = new GameObject("TargetLine");
+        targetLineObject.transform.SetParent(transform, false);
+
+        SpriteRenderer targetRenderer = targetLineObject.AddComponent<SpriteRenderer>();
+        SpriteRenderer sourceRenderer = GetSourceBarRenderer();
+
+        if (sourceRenderer != null)
+        {
+            targetRenderer.sprite = sourceRenderer.sprite;
+            targetRenderer.sortingLayerID = sourceRenderer.sortingLayerID;
+            targetRenderer.sortingOrder = sourceRenderer.sortingOrder + 2;
+        }
+
+        targetRenderer.color = targetLineColor;
+
+#if UNITY_EDITOR
+        Undo.RegisterCreatedObjectUndo(targetLineObject, "Create Drink Target Line");
+        EditorUtility.SetDirty(this);
+        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+#endif
+
+        return targetLineObject.transform;
+    }
+
+    SpriteRenderer GetSourceBarRenderer()
+    {
+        if (barBack != null && barBack.TryGetComponent(out SpriteRenderer backRenderer))
+        {
+            return backRenderer;
+        }
+
+        if (barFill != null && barFill.TryGetComponent(out SpriteRenderer fillRenderer))
+        {
+            return fillRenderer;
+        }
+
+        return null;
+    }
+
+    void UpdateTargetLine()
+    {
+        if (targetLine == null)
+        {
+            return;
+        }
+
+        float target01 = Mathf.Clamp01(requiredDrinkPercent / 100f);
+        float targetY = barBottomLocalY + verticalBarHeight * target01;
+        targetLine.localPosition = new Vector3(0f, targetY, targetLine.localPosition.z);
+        targetLine.localScale = new Vector3(targetLineWidth, targetLineThickness, targetLine.localScale.z == 0f ? 1f : targetLine.localScale.z);
+
+        SpriteRenderer targetRenderer = targetLine.GetComponent<SpriteRenderer>();
+        if (targetRenderer != null)
+        {
+            targetRenderer.color = targetLineColor;
         }
     }
 
@@ -225,7 +446,16 @@ public class DrinkingAmount : MonoBehaviour
         }
 
         float fill01 = currentDrinkPercent / 100f;
-        barFill.localScale = new Vector3(fill01, barFill.localScale.y, barFill.localScale.z);
+
+        if (!useVerticalBar)
+        {
+            barFill.localScale = new Vector3(fill01, barFill.localScale.y, barFill.localScale.z);
+            return;
+        }
+
+        float fillHeight = verticalBarHeight * fill01;
+        barFill.localScale = new Vector3(verticalBarWidth, fillHeight, barFill.localScale.z);
+        barFill.localPosition = new Vector3(0f, barBottomLocalY + fillHeight * 0.5f, barFill.localPosition.z);
     }
 
     void CheckDrinkAmount()

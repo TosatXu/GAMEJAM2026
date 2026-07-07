@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientPiece
   ingredientName: heart
+  ingredientType: 0
   ingredientPercent: 30
 --- !u!50 &51984671
 Rigidbody2D:
@@ -353,9 +354,21 @@ MonoBehaviour:
   timingBar: {fileID: 751665758}
   nextButton: {fileID: 409887928}
   drinkingSceneName: Scenes2
+  recipeDisplayUI: {fileID: 0}
+  recipeText: {fileID: 281333855}
+  hasBodyPart: 0
+  hasBottle: 0
+  hasPlant: 0
+  receivedBodyPartName: 
+  receivedBottleName: 
+  receivedPlantName: 
   hasCorrectIngredient: 0
+  hasCorrectBodyPart: 0
+  hasCorrectBottle: 0
+  hasCorrectPlant: 0
   hasGoodFireTiming: 0
   potionReady: 0
+  potionQuality: 100
 --- !u!1 &179806671
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +596,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_text
+      value: 'Recipe
+
+
+        [ ] 1 x Body: ???
+
+        [ ] 1 x Bottle: ???
+
+        [
+        ] 1 x Plant: ???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3447719555133167084, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_Name
       value: Panel
@@ -597,6 +626,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
   m_PrefabInstance: {fileID: 281333853}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &281333855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 581069748485028242, guid: 5e02a191411776344901093c203c3962, type: 3}
+  m_PrefabInstance: {fileID: 281333853}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2816d455a488c694fb9b805c6c94aa3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeText
 --- !u!1 &407664614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeRuntimeData
   currentRecipe: {fileID: 0}
+  lastPotionQuality: 100
+  lastPotionHadCorrectIngredients: 0
+  lastPotionHadGoodFireTiming: 0
 --- !u!4 &845803167
 Transform:
   m_ObjectHideFlags: 0
@@ -1443,6 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientPiece
   ingredientName: 
+  ingredientType: 0
   ingredientPercent: 30
 --- !u!50 &941293415
 Rigidbody2D:
@@ -1721,6 +1765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientPiece
   ingredientName: 
+  ingredientType: 0
   ingredientPercent: 30
 --- !u!50 &1132461086
 Rigidbody2D:
