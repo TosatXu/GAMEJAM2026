@@ -16,7 +16,7 @@ public class DialogueBox : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("encounterNum") != 0 && PlayerPrefs.GetInt("encounterNum") != 1 && PlayerPrefs.GetInt("encounterNum") != 2 && PlayerPrefs.GetInt("encounterNum") != 3 && PlayerPrefs.GetInt("encounterNum") != 4 && PlayerPrefs.GetInt("encounterNum") != 5)
+        if (!(PlayerPrefs.GetInt("encounterNum") >= 0))
         {
             PlayerPrefs.SetInt("encounterNum", -1);
         }
@@ -25,7 +25,7 @@ public class DialogueBox : MonoBehaviour
     void OnEnable()
     {
         PlayerPrefs.SetInt("encounterNum", PlayerPrefs.GetInt("encounterNum") + 1);
-        encounterCounter = PlayerPrefs.GetInt("encounterNum");
+        encounterCounter = PlayerPrefs.GetInt("encounterNum") % 5;
 
 
     }
@@ -35,6 +35,7 @@ public class DialogueBox : MonoBehaviour
         if (Input.anyKeyDown)
         {
             Debug.Log(encounterCounter);
+            Debug.Log(PlayerPrefs.GetInt("encounterNum"));
 
             if (encounterCounter == 0)
             {
