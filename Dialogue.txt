@@ -1,7 +1,5 @@
 THE PARENT - Intro
 
-The Alchemist - Welcome, what is it that you need?
-
 The Parent - My daughter needs help. Her life was taken by a plague.
 
 The Parent - Help her, please. Bring my baby back to me.
@@ -9,16 +7,34 @@ The Parent - Help her, please. Bring my baby back to me.
 The Parent - She was an angel, the purest little angel. I want you to make her pure again.
 
 
+THE PARENT - REACTIONS
+
+FAIL - What have you done?
+
+MEDIOCRE - I suppose someone like you wouldn't understand purity.
+
+GREAT - "My baby..."
+
 
 THE WIDOW - Intro
 
-The Alchemist - Welcome, what is it that you need?
+The Widow - It was nine months this time. He must be getting better.
 
+The Widow - He needs more intelligence.
+
+The Widow - I'll teach him not to slap a horse's ass this time.
+
+
+THE WIDOW - REACTIONS
+
+FAIL - Is this "planned obsolescence"?
+
+MEDIOCRE - Acceptable.
+
+GREAT - This is your best work yet, thank you.
 
 
 THE SERVANT - Intro
-
-The Alchemist - Welcome, what is it that you need?
 
 The Servant - It is my Master. He must've fallen down the stairs. He must've been drinking wine. It was his favourite, he drank it all of the time.
 
@@ -26,5 +42,11 @@ The Servant - He was kind, a kind master.
 
 The Servant - Could you give him a heart?
 
-The Alchemist - Don't worry, he won't remember a thing.
 
+THE SERVANT - REACTIONS
+
+FAIL - ...thank you.
+
+MEDIOCRE - The Master thanks you.
+
+GREAT - ...
