@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Cauldron : MonoBehaviour
@@ -10,15 +11,30 @@ public class Cauldron : MonoBehaviour
     public Sprite brown;
     public Sprite tears;
 
+    [Header("Drop Sound")]
+    public AudioClip dropSound;
+    public AudioMixerGroup sfxMixerGroup;
+    [Range(0f, 1f)] public float dropSoundVolume = 0.8f;
+    public bool playDropSound = true;
+
+    AudioSource audioSource;
+
     void Awake()
     {
         BoxCollider2D cauldronCollider = GetComponent<BoxCollider2D>();
         cauldronCollider.isTrigger = true;
+        SetupAudioSource();
 
         if (potionMechanicsManager == null)
         {
             potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
         }
+    }
+
+    void OnValidate()
+    {
+        audioSource = GetComponent<AudioSource>();
+        ApplyAudioSourceSettings();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -48,6 +64,8 @@ public class Cauldron : MonoBehaviour
 
     void PutPieceIntoCauldron(IngredientPiece piece)
     {
+        PlayDropSound();
+
         if (potionMechanicsManager == null)
         {
             potionMechanicsManager = FindFirstObjectByType<PotionMechanicsManager>();
@@ -100,5 +118,44 @@ public class Cauldron : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = tears;
         }
+    }
+
+    void SetupAudioSource()
+    {
+        audioSource = GetComponent<AudioSource>();
+        ApplyAudioSourceSettings();
+    }
+
+    void ApplyAudioSourceSettings()
+    {
+        if (audioSource == null)
+        {
+            return;
+        }
+
+        audioSource.outputAudioMixerGroup = sfxMixerGroup;
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
+    }
+
+    void PlayDropSound()
+    {
+        if (!playDropSound)
+        {
+            return;
+        }
+
+        if (audioSource == null)
+        {
+            SetupAudioSource();
+        }
+
+        if (audioSource == null || dropSound == null)
+        {
+            return;
+        }
+
+        audioSource.PlayOneShot(dropSound, dropSoundVolume);
     }
 }
