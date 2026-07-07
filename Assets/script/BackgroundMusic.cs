@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -23,6 +24,19 @@ public class BackgroundMusic : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (PlayerPrefs.GetInt("encounterNum") == 0)
+        {
+            musicClip = music1;
+        }
+        if (PlayerPrefs.GetInt("encounterNum") == 1)
+        {
+            musicClip = music2;
+        }
+        if (PlayerPrefs.GetInt("encounterNum") == 2)
+        {
+            musicClip = music3;
+        }
 
         if (keepSingleInstance && Instance != null && Instance != this)
         {

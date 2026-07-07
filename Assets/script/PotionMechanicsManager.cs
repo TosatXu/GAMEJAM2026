@@ -575,7 +575,7 @@ public class PotionMechanicsManager : MonoBehaviour
 
         if (cauldron != null)
         {
-            cauldron.ShowPotionResult(hasCorrectIngredient, hasGoodFireTiming);
+            //cauldron.ShowPotionResult(hasCorrectIngredient, hasGoodFireTiming);
             return;
         }
 
