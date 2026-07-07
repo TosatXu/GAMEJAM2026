@@ -654,12 +654,12 @@ MonoBehaviour:
   m_text: 'Recipe
 
 
-    [ ] 1 x Body: ???
+    [ ] 1 x Organ: ???
 
-    [ ] 1 x Bottle: ???
+    [ ] 1 x Liquid: ???
 
-    [ ] 1 x Plant:
-    ???'
+    [ ] 1 x
+    Plant: ???'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9547169, g: 0.93427014, b: 0.87005335, a: 1}
+  m_Color: {r: 0.58431375, g: 0.62352943, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3321,6 +3321,7 @@ GameObject:
   - component: {fileID: 1757989542}
   - component: {fileID: 1757989541}
   - component: {fileID: 1757989540}
+  - component: {fileID: 1757989544}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -3463,6 +3464,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757989544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757989539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c5aef5226248b3bf1dbba8a50e5d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CauldronVisual
+  spriteRenderer: {fileID: 0}
+  image: {fileID: 0}
+  defaultSprite: {fileID: 0}
+  vitriolSprite: {fileID: -6300507896001481806, guid: 2f157fb52e23399479ebaeed6bce8549, type: 3}
+  failedSprite: {fileID: -5865937192321964662, guid: d16b99e4e3f1cd84faebf8f6f24160c1, type: 3}
+  captureDefaultSpriteOnAwake: 1
 --- !u!1001 &1830816084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3879,6 +3898,7 @@ MonoBehaviour:
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
   recipeText: {fileID: 1303648323}
+  cauldronVisual: {fileID: 0}
   hasBodyPart: 0
   hasBottle: 0
   hasPlant: 0
@@ -4185,11 +4205,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: ???
+        [ ] 1 x Organ: Liver
 
-        [ ] 1 x Liquid: ???
+        [ ] 1 x Liquid: Water
 
-        [ ] 1 x Plant: Dream Lily'
+        [
+        ] 1 x Plant: Dream Lily'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize
