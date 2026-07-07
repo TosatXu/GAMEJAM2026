@@ -123,8 +123,4 @@ public class BackgroundMusic : MonoBehaviour
         audioSource.spatialBlend = 0f;
     }
 
-    private void OnEnable()
-    {
-        Debug.Log("a");
-    }
 }
