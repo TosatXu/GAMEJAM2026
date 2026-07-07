@@ -6,15 +6,19 @@ public class DialogueBox : MonoBehaviour
 {
     public int dialogueNum;
     public int encounterNum;
-    public string[] intro1 = new string[20];
-    public string[] exit1 = new string[20];
-    public string[] intro2 = new string[20];
-    public string[] exit2 = new string[20];
-    public string[] intro3 = new string[20];
-    public string[] exit3 = new string[20];
+    public string[] intro1 = new string[4];
+    public string[] exit1 = new string[2];
+    public string[] intro2 = new string[4];
+    public string[] exit2 = new string[2];
+    public string[] intro3 = new string[4];
+    public string[] exit3 = new string[2];
     public TextMeshProUGUI display;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         if (Input.anyKeyDown)
@@ -22,10 +26,10 @@ public class DialogueBox : MonoBehaviour
             if (encounterNum == 0)
             {
                 dialogueNum++;
+                if ()
+                dialogueNum = Mathf.Clamp(dialogueNum, 0, 3);
                 display.text = intro1[dialogueNum];
             }
         }
     }
-
-    
 }
