@@ -7,6 +7,10 @@ public class ScreenButton : MonoBehaviour
 
     public void switchScene ()
     {
+        if (PlayerPrefs.GetInt("encounterNum") >= 2)
+        {
+            sceneID = 4;
+        }
         SceneManager.LoadScene(sceneID);
     }
 }
