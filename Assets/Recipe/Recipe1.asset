@@ -15,4 +15,4 @@ MonoBehaviour:
   requiredBodyPartName: liver
   requiredBottleName: water
   requiredPlantName: dreamlily
-  requiredDrinkPercent: 80
+  requiredDrinkPercent: 40

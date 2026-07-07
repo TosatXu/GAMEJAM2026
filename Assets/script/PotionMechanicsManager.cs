@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class PotionMechanicsManager : MonoBehaviour
     public TimingBar timingBar;
 
     public GameObject nextButton;
+    public Button nextButtonStyleSource;
+    public string nextButtonStyleSourceName = "BodyScreen";
     public string drinkingSceneName = "DrinkingScene";
 
     public RecipeDisplayUI recipeDisplayUI;
@@ -39,7 +42,17 @@ public class PotionMechanicsManager : MonoBehaviour
     bool hasFireTimingResult;
 
 #if UNITY_EDITOR
+    void OnEnable()
+    {
+        ScheduleEditorRefresh();
+    }
+
     void OnValidate()
+    {
+        ScheduleEditorRefresh();
+    }
+
+    void ScheduleEditorRefresh()
     {
         if (Application.isPlaying)
         {
@@ -57,6 +70,10 @@ public class PotionMechanicsManager : MonoBehaviour
             return;
         }
 
+        SetupNextButtonEditorPreview();
+
+        RecipeData displayRecipe = GetRecipeForDisplay();
+
         if (recipeText == null)
         {
             recipeText = FindRecipeText();
@@ -64,7 +81,7 @@ public class PotionMechanicsManager : MonoBehaviour
 
         if (recipeText != null)
         {
-            recipeText.SetRecipe(recipeData);
+            recipeText.SetRecipe(displayRecipe);
             recipeText.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
             DisableLegacyRecipeDisplay();
             DisableUnusedRecipeTexts();
@@ -102,7 +119,7 @@ public class PotionMechanicsManager : MonoBehaviour
             recipeDisplayUI.BuildIfNeeded();
         }
 
-        recipeDisplayUI.SetRecipe(recipeData);
+        recipeDisplayUI.SetRecipe(displayRecipe);
         recipeDisplayUI.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
 
         EditorUtility.SetDirty(this);
@@ -138,10 +155,7 @@ public class PotionMechanicsManager : MonoBehaviour
 
     void SetupNextButton()
     {
-        if (nextButton == null)
-        {
-            nextButton = GameObject.Find("NextButton");
-        }
+        FindNextButton();
 
         if (nextButton == null)
         {
@@ -164,9 +178,151 @@ public class PotionMechanicsManager : MonoBehaviour
         {
             button.onClick.RemoveListener(GoToDrinkingScene);
             button.onClick.AddListener(GoToDrinkingScene);
+            ApplyNextButtonStyle(button);
         }
     }
 
+
+#if UNITY_EDITOR
+    void SetupNextButtonEditorPreview()
+    {
+        FindNextButton();
+        if (nextButton == null)
+        {
+            return;
+        }
+
+        Button button = nextButton.GetComponent<Button>();
+        if (button == null)
+        {
+            return;
+        }
+
+        ApplyNextButtonStyle(button);
+        EditorUtility.SetDirty(this);
+        EditorUtility.SetDirty(nextButton);
+        EditorUtility.SetDirty(button);
+    }
+#endif
+
+    void FindNextButton()
+    {
+        if (nextButton != null)
+        {
+            return;
+        }
+
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (buttons[i].name == "NextButton")
+            {
+                nextButton = buttons[i].gameObject;
+                return;
+            }
+        }
+    }
+
+    void ApplyNextButtonStyle(Button targetButton)
+    {
+        Button sourceButton = GetNextButtonStyleSource();
+        if (sourceButton == null || targetButton == null || sourceButton == targetButton)
+        {
+            return;
+        }
+
+        RectTransform sourceRect = sourceButton.transform as RectTransform;
+        RectTransform targetRect = targetButton.transform as RectTransform;
+        if (sourceRect != null && targetRect != null)
+        {
+            targetRect.sizeDelta = sourceRect.sizeDelta;
+        }
+
+        Image sourceImage = sourceButton.GetComponent<Image>();
+        Image targetImage = targetButton.GetComponent<Image>();
+        if (sourceImage != null && targetImage != null)
+        {
+            targetImage.sprite = sourceImage.sprite;
+            targetImage.type = sourceImage.type;
+            targetImage.preserveAspect = sourceImage.preserveAspect;
+            targetImage.fillCenter = sourceImage.fillCenter;
+            targetImage.fillMethod = sourceImage.fillMethod;
+            targetImage.fillAmount = sourceImage.fillAmount;
+            targetImage.fillClockwise = sourceImage.fillClockwise;
+            targetImage.fillOrigin = sourceImage.fillOrigin;
+            targetImage.useSpriteMesh = sourceImage.useSpriteMesh;
+            targetImage.pixelsPerUnitMultiplier = sourceImage.pixelsPerUnitMultiplier;
+            targetImage.color = sourceImage.color;
+            targetImage.material = sourceImage.material;
+            targetImage.raycastTarget = sourceImage.raycastTarget;
+            targetImage.maskable = sourceImage.maskable;
+            targetButton.targetGraphic = targetImage;
+        }
+
+        targetButton.transition = sourceButton.transition;
+        targetButton.colors = sourceButton.colors;
+        targetButton.spriteState = sourceButton.spriteState;
+        targetButton.animationTriggers = sourceButton.animationTriggers;
+        targetButton.navigation = sourceButton.navigation;
+        targetButton.interactable = sourceButton.interactable;
+
+        TextMeshProUGUI sourceText = sourceButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        TextMeshProUGUI targetText = targetButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        if (sourceText != null && targetText != null)
+        {
+            string label = string.IsNullOrEmpty(targetText.text) ? "Next" : targetText.text;
+            RectTransform sourceTextRect = sourceText.transform as RectTransform;
+            RectTransform targetTextRect = targetText.transform as RectTransform;
+            if (sourceTextRect != null && targetTextRect != null)
+            {
+                targetTextRect.anchorMin = sourceTextRect.anchorMin;
+                targetTextRect.anchorMax = sourceTextRect.anchorMax;
+                targetTextRect.pivot = sourceTextRect.pivot;
+                targetTextRect.anchoredPosition = sourceTextRect.anchoredPosition;
+                targetTextRect.sizeDelta = sourceTextRect.sizeDelta;
+                targetTextRect.offsetMin = sourceTextRect.offsetMin;
+                targetTextRect.offsetMax = sourceTextRect.offsetMax;
+            }
+
+            targetText.font = sourceText.font;
+            targetText.fontSharedMaterial = sourceText.fontSharedMaterial;
+            targetText.fontSize = sourceText.fontSize;
+            targetText.fontStyle = sourceText.fontStyle;
+            targetText.enableAutoSizing = sourceText.enableAutoSizing;
+            targetText.fontSizeMin = sourceText.fontSizeMin;
+            targetText.fontSizeMax = sourceText.fontSizeMax;
+            targetText.color = sourceText.color;
+            targetText.alignment = sourceText.alignment;
+            targetText.margin = sourceText.margin;
+            targetText.raycastTarget = sourceText.raycastTarget;
+            targetText.text = label;
+        }
+    }
+
+    Button GetNextButtonStyleSource()
+    {
+        if (nextButtonStyleSource != null)
+        {
+            return nextButtonStyleSource;
+        }
+
+        if (string.IsNullOrEmpty(nextButtonStyleSourceName))
+        {
+            return null;
+        }
+
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (string.Equals(buttons[i].name, nextButtonStyleSourceName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                nextButtonStyleSource = buttons[i];
+                return nextButtonStyleSource;
+            }
+        }
+
+        return null;
+    }
     public void SetRecipe(RecipeData newRecipe)
     {
         recipeData = newRecipe;
@@ -439,13 +595,44 @@ public class PotionMechanicsManager : MonoBehaviour
         }
     }
 
+    public void RefreshRecipeDisplayPreview()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            SetupNextButtonEditorPreview();
+        }
+#endif
+
+        UpdateRecipeDisplay();
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorUtility.SetDirty(this);
+            if (recipeText != null)
+            {
+                EditorUtility.SetDirty(recipeText);
+            }
+
+            if (recipeDisplayUI != null)
+            {
+                EditorUtility.SetDirty(recipeDisplayUI);
+            }
+
+            EditorSceneManager.MarkSceneDirty(gameObject.scene);
+        }
+#endif
+    }
+
     void UpdateRecipeDisplay()
     {
         SetupRecipeDisplay();
+        RecipeData displayRecipe = GetRecipeForDisplay();
 
         if (recipeText != null)
         {
-            recipeText.SetRecipe(recipeData);
+            recipeText.SetRecipe(displayRecipe);
             recipeText.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
             return;
         }
@@ -455,8 +642,29 @@ public class PotionMechanicsManager : MonoBehaviour
             return;
         }
 
-        recipeDisplayUI.SetRecipe(recipeData);
+        recipeDisplayUI.SetRecipe(displayRecipe);
         recipeDisplayUI.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
+    }
+
+    RecipeData GetRecipeForDisplay()
+    {
+        if (recipeData != null)
+        {
+            return recipeData;
+        }
+
+        if (RecipeRuntimeData.Instance != null && RecipeRuntimeData.Instance.currentRecipe != null)
+        {
+            return RecipeRuntimeData.Instance.currentRecipe;
+        }
+
+        RecipeRandomizer randomizer = FindFirstObjectByType<RecipeRandomizer>(FindObjectsInactive.Include);
+        if (randomizer != null)
+        {
+            return randomizer.GetRecipeForCurrentEncounter();
+        }
+
+        return null;
     }
 
     RecipeText FindRecipeText()

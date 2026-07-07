@@ -15,4 +15,4 @@ MonoBehaviour:
   requiredBodyPartName: heart
   requiredBottleName: aquaregia
   requiredPlantName: nettle
-  requiredDrinkPercent: 40
+  requiredDrinkPercent: 70

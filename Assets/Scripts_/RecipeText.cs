@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[ExecuteAlways]
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class RecipeText : MonoBehaviour
 {
@@ -16,6 +17,18 @@ public class RecipeText : MonoBehaviour
     bool hasPlant;
 
     void Awake()
+    {
+        SetupText();
+        RefreshText();
+    }
+
+    void OnEnable()
+    {
+        SetupText();
+        RefreshText();
+    }
+
+    void OnValidate()
     {
         SetupText();
         RefreshText();
