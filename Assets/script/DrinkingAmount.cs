@@ -13,6 +13,11 @@ public class DrinkingAmount : MonoBehaviour
 
     void Start()
     {
+        if (RecipeRuntimeData.Instance != null && RecipeRuntimeData.Instance.currentRecipe != null)
+        {
+            recipeData = RecipeRuntimeData.Instance.currentRecipe;
+        }
+
         currentDrinkPercent = 0f;
         UpdateBar();
     }

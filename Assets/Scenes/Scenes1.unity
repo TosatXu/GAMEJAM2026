@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3ed5570ff2d9f4c9fd39d28d1fd573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionMechanicsManager
-  recipeData: {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
+  recipeData: {fileID: 0}
   timingBar: {fileID: 751665758}
   nextButton: {fileID: 409887928}
   drinkingSceneName: Scenes2
@@ -1023,6 +1023,51 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &845803165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845803167}
+  - component: {fileID: 845803166}
+  m_Layer: 0
+  m_Name: RecipeRuntimeData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &845803166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845803165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03e1fc825d43894e8775e17c033b7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeRuntimeData
+  currentRecipe: {fileID: 0}
+--- !u!4 &845803167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845803165}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.22507, y: -0.99693, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941293409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1769,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1384783076961840416, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
   m_PrefabInstance: {fileID: 1468271368}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1678711154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1678711156}
+  - component: {fileID: 1678711155}
+  m_Layer: 0
+  m_Name: RecipeRandomizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1678711155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678711154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bd17da3f0cf1249b313d75572a4d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeRandomizer
+  possibleRecipes:
+  - {fileID: 11400000, guid: 9fb2299f3b6b8754b8a7b6aaa65cfc4d, type: 2}
+  - {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
+  - {fileID: 11400000, guid: 9d03e15c145757b44955ecca6aff0d8d, type: 2}
+  potionMechanicsManager: {fileID: 69999305}
+--- !u!4 &1678711156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678711154}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.22507, y: -0.99693, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1713956731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,3 +2170,5 @@ SceneRoots:
   - {fileID: 1811169928}
   - {fileID: 69999304}
   - {fileID: 751665759}
+  - {fileID: 845803167}
+  - {fileID: 1678711156}
