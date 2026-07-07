@@ -4474,6 +4474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1411911952}
   - component: {fileID: 1411911951}
+  - component: {fileID: 1411911953}
   m_Layer: 0
   m_Name: TImingBar
   m_TagString: Untagged
@@ -4497,6 +4498,12 @@ MonoBehaviour:
   leftPoint: {fileID: 2071273132}
   rightPoint: {fileID: 923449130}
   marker: {fileID: 1461793034}
+  timingAudioSource: {fileID: 1411911953}
+  timingStartSound: {fileID: 8300000, guid: f7b2f5156dd3b9e4e9c90fdf81572f5f, type: 3}
+  sfxMixerGroup: {fileID: 4973493604333330131, guid: 985d52d42f6e00449bf3df97f9542eff, type: 2}
+  timingStartVolume: 0.04
+  playTimingStartSound: 1
+  loopTimingSound: 1
   redZoneStart: 40
   redZoneEnd: 60
   markerSpeed: 1.5
@@ -4508,7 +4515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411911950}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.029083598, y: -0.005816906, z: 0, w: 0.9995601}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4519,7 +4526,104 @@ Transform:
   - {fileID: 312982202}
   - {fileID: 1863607552}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.333, y: -0.667, z: -0.019}
+--- !u!82 &1411911953
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411911950}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 4973493604333330131, guid: 985d52d42f6e00449bf3df97f9542eff, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1461793033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,6 +5236,7 @@ MonoBehaviour:
   green: {fileID: -6300507896001481806, guid: 2f157fb52e23399479ebaeed6bce8549, type: 3}
   brown: {fileID: -6760138724999302414, guid: 8dd0209a5dc65f34799bd0ff0d2f2dd3, type: 3}
   tears: {fileID: -5900716478595307635, guid: 6d6e72e1e3abcf54aa617e00a1554ec4, type: 3}
+  redZoneSuccessSprite: {fileID: -5865937192321964662, guid: d16b99e4e3f1cd84faebf8f6f24160c1, type: 3}
   dropSound: {fileID: 8300000, guid: ddb64eeda01287042bac60364bdeb8ee, type: 3}
   sfxMixerGroup: {fileID: 4973493604333330131, guid: 985d52d42f6e00449bf3df97f9542eff, type: 2}
   dropSoundVolume: 0.8
@@ -6309,12 +6414,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: Liver
+        [ ] 1 x Organ: Heart
 
-        [ ] 1 x Liquid: Water
+        [ ] 1 x Liquid: Aqua
+        Regia
 
-        [
-        ] 1 x Plant: Dream Lily'
+        [ ] 1 x Plant: Ghost Orchid'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize
