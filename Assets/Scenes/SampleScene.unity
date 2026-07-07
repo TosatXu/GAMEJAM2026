@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &262086509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -746,6 +746,7 @@ MonoBehaviour:
   recipe1: ' 1 x Liver <br> 1 x ?Liquid <br> 1 x ?Material <br> 1 x Dreamlily'
   recipe2: ' 1 x ?Organ <br> 1 x Salted Tears <br> 1 x Bat Fang'
   recipe3: ' 1 x Heart <br> 1 x Aqua Regia <br> 1 x Baneberry <br> 1 x ?Material '
+  showProgress: 1
 --- !u!1 &286939584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,7 +3388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1835899329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3675,6 +3676,7 @@ MonoBehaviour:
   nextButton: {fileID: 702143214}
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
+  recipeText: {fileID: 0}
   hasBodyPart: 0
   hasBottle: 0
   hasPlant: 0

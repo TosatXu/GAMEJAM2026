@@ -16,6 +16,7 @@ public class PotionMechanicsManager : MonoBehaviour
     public string drinkingSceneName = "DrinkingScene";
 
     public RecipeDisplayUI recipeDisplayUI;
+    public RecipeText recipeText;
 
     [Header("Received Ingredients")]
     public bool hasBodyPart;
@@ -53,6 +54,24 @@ public class PotionMechanicsManager : MonoBehaviour
     {
         if (this == null || Application.isPlaying)
         {
+            return;
+        }
+
+        if (recipeText == null)
+        {
+            recipeText = FindRecipeText();
+        }
+
+        if (recipeText != null)
+        {
+            recipeText.SetRecipe(recipeData);
+            recipeText.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
+            DisableLegacyRecipeDisplay();
+            DisableUnusedRecipeTexts();
+
+            EditorUtility.SetDirty(this);
+            EditorUtility.SetDirty(recipeText);
+            EditorSceneManager.MarkSceneDirty(gameObject.scene);
             return;
         }
 
@@ -396,6 +415,18 @@ public class PotionMechanicsManager : MonoBehaviour
 
     void SetupRecipeDisplay()
     {
+        if (recipeText == null)
+        {
+            recipeText = FindRecipeText();
+        }
+
+        if (recipeText != null)
+        {
+            DisableLegacyRecipeDisplay();
+            DisableUnusedRecipeTexts();
+            return;
+        }
+
         if (recipeDisplayUI == null)
         {
             recipeDisplayUI = FindFirstObjectByType<RecipeDisplayUI>(FindObjectsInactive.Include);
@@ -412,6 +443,13 @@ public class PotionMechanicsManager : MonoBehaviour
     {
         SetupRecipeDisplay();
 
+        if (recipeText != null)
+        {
+            recipeText.SetRecipe(recipeData);
+            recipeText.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
+            return;
+        }
+
         if (recipeDisplayUI == null)
         {
             return;
@@ -419,6 +457,72 @@ public class PotionMechanicsManager : MonoBehaviour
 
         recipeDisplayUI.SetRecipe(recipeData);
         recipeDisplayUI.SetIngredientProgress(hasBodyPart, hasBottle, hasPlant);
+    }
+
+    RecipeText FindRecipeText()
+    {
+        RecipeText[] recipeTexts = FindObjectsByType<RecipeText>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        for (int i = 0; i < recipeTexts.Length; i++)
+        {
+            if (HasParentNamed(recipeTexts[i].transform, "Panel"))
+            {
+                return recipeTexts[i];
+            }
+        }
+
+        if (recipeTexts.Length > 0)
+        {
+            return recipeTexts[0];
+        }
+
+        return null;
+    }
+
+    bool HasParentNamed(Transform child, string parentName)
+    {
+        Transform current = child;
+        while (current != null)
+        {
+            if (current.name == parentName)
+            {
+                return true;
+            }
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    void DisableLegacyRecipeDisplay()
+    {
+        if (recipeDisplayUI == null)
+        {
+            recipeDisplayUI = FindFirstObjectByType<RecipeDisplayUI>(FindObjectsInactive.Include);
+        }
+
+        if (recipeDisplayUI != null)
+        {
+            recipeDisplayUI.gameObject.SetActive(false);
+        }
+    }
+
+    void DisableUnusedRecipeTexts()
+    {
+        if (recipeText == null)
+        {
+            return;
+        }
+
+        RecipeText[] recipeTexts = FindObjectsByType<RecipeText>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < recipeTexts.Length; i++)
+        {
+            if (recipeTexts[i] != recipeText)
+            {
+                recipeTexts[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     void SavePotionResultToRuntime()
@@ -445,7 +549,3 @@ public class PotionMechanicsManager : MonoBehaviour
         SceneManager.LoadScene(drinkingSceneName);
     }
 }
-
-
-
-
