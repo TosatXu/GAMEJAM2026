@@ -59,7 +59,6 @@ public class Cauldron : MonoBehaviour
         }
 
         PutPieceIntoCauldron(piece);
-
     }
 
     void PutPieceIntoCauldron(IngredientPiece piece)
@@ -106,17 +105,53 @@ public class Cauldron : MonoBehaviour
 
     void changeColour()
     {
-        if (potionMechanicsManager.GetComponent<PotionMechanicsManager>().potionQuality <= 30)
+        if (potionMechanicsManager == null)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = brown;
+            return;
         }
-        else if (potionMechanicsManager.GetComponent<PotionMechanicsManager>().potionQuality >= 80)
+
+        if (potionMechanicsManager.potionQuality <= 30)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = green;
+            SetCauldronSprite(brown);
+        }
+        else if (potionMechanicsManager.potionQuality >= 80)
+        {
+            SetCauldronSprite(green);
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = tears;
+            SetCauldronSprite(tears);
+        }
+    }
+
+    public void ShowPotionResult(bool ingredientsCorrect, bool fireTimingGood)
+    {
+        if (ingredientsCorrect && fireTimingGood)
+        {
+            SetCauldronSprite(green);
+        }
+        else
+        {
+            SetCauldronSprite(tears != null ? tears : brown);
+        }
+    }
+
+    public void ShowDefaultVisual()
+    {
+        SetCauldronSprite(standard);
+    }
+
+    void SetCauldronSprite(Sprite sprite)
+    {
+        if (sprite == null)
+        {
+            return;
+        }
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = sprite;
         }
     }
 

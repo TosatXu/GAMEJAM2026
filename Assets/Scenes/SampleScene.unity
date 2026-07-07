@@ -5770,6 +5770,7 @@ MonoBehaviour:
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
   recipeText: {fileID: 1303648323}
+  cauldron: {fileID: 1757989540}
   cauldronVisual: {fileID: 0}
   hasBodyPart: 0
   hasBottle: 0
