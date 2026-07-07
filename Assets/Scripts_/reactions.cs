@@ -16,7 +16,7 @@ public class reactions : MonoBehaviour
             {
                 display.text = reaction1[0];
             }
-            if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
+            else if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
             {
                 display.text = reaction1[2];
             }
@@ -31,7 +31,7 @@ public class reactions : MonoBehaviour
             {
                 display.text = reaction2[0];
             }
-            if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
+            else if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
             {
                 display.text = reaction2[2];
             }
@@ -46,7 +46,7 @@ public class reactions : MonoBehaviour
             {
                 display.text = reaction3[0];
             }
-            if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
+            else if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
             {
                 display.text = reaction3[2];
             }

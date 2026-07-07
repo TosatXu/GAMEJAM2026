@@ -3342,6 +3342,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cauldron
   potionMechanicsManager: {fileID: 0}
   destroyPieceAfterDrop: 1
+  standard: {fileID: -4251383097111788073, guid: 9d45b8657c2bf794587d8b5747a37836, type: 3}
+  green: {fileID: -6300507896001481806, guid: 2f157fb52e23399479ebaeed6bce8549, type: 3}
+  brown: {fileID: -5865937192321964662, guid: d16b99e4e3f1cd84faebf8f6f24160c1, type: 3}
+  tears: {fileID: -5900716478595307635, guid: 6d6e72e1e3abcf54aa617e00a1554ec4, type: 3}
 --- !u!61 &1757989541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4207,7 +4211,7 @@ PrefabInstance:
         [ ] 1 x Liquid: Aqua
         Regia
 
-        [ ] 1 x Plant: Nettle'
+        [ ] 1 x Plant: Ghost Orchid'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize

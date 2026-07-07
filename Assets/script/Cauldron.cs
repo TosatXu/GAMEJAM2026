@@ -5,6 +5,10 @@ public class Cauldron : MonoBehaviour
 {
     public PotionMechanicsManager potionMechanicsManager;
     public bool destroyPieceAfterDrop = true;
+    public Sprite standard;
+    public Sprite green;
+    public Sprite brown;
+    public Sprite tears;
 
     void Awake()
     {
@@ -39,6 +43,7 @@ public class Cauldron : MonoBehaviour
         }
 
         PutPieceIntoCauldron(piece);
+
     }
 
     void PutPieceIntoCauldron(IngredientPiece piece)
@@ -76,6 +81,24 @@ public class Cauldron : MonoBehaviour
             {
                 pieceCollider.enabled = false;
             }
+        }
+
+        changeColour();
+    }
+
+    void changeColour()
+    {
+        if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality <= 30)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = brown;
+        }
+        else if (GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality >= 80)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = green;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = tears;
         }
     }
 }

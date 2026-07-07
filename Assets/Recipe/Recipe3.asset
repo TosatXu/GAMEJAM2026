@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   requiredBodyPartName: heart
   requiredBottleName: aquaregia
-  requiredPlantName: nettle
+  requiredPlantName: ghostorchid
   requiredDrinkPercent: 70
