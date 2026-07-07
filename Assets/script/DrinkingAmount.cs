@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 #if UNITY_EDITOR
@@ -22,6 +23,13 @@ public class DrinkingAmount : MonoBehaviour
 
     [Header("Pour Effect")]
     public ParticleSystem pourEffect;
+
+    [Header("Drinking Sound")]
+    public AudioSource drinkingAudioSource;
+    public AudioClip drinkingSound;
+    public AudioMixerGroup sfxMixerGroup;
+    [Range(0f, 1f)] public float drinkingSoundVolume = 0.8f;
+    public bool playDrinkingSound = true;
 
     [Header("Vertical Drink Bar")]
     public RecipeData previewRecipeData;
@@ -93,6 +101,7 @@ public class DrinkingAmount : MonoBehaviour
 
         SetupResultText();
         SetResultText(waitingText);
+        SetupDrinkingSound();
     }
 
     void Start()
@@ -105,6 +114,7 @@ public class DrinkingAmount : MonoBehaviour
 
         SetupResultText();
         SetResultText(waitingText);
+        SetupDrinkingSound();
         SetupNextButton();
         HideNextButton();
 
@@ -121,6 +131,7 @@ public class DrinkingAmount : MonoBehaviour
         currentDrinkPercent = 0f;
         UpdateBar();
         StopPourEffect(true);
+        StopDrinkingSound();
     }
 
     void Update()
@@ -134,6 +145,7 @@ public class DrinkingAmount : MonoBehaviour
         {
             isDrinking = true;
             PlayPourEffect();
+            PlayDrinkingSound();
         }
 
         if (Input.GetMouseButton(0) && isDrinking)
@@ -148,6 +160,7 @@ public class DrinkingAmount : MonoBehaviour
             isDrinking = false;
             hasFinished = true;
             StopPourEffect(false);
+            StopDrinkingSound();
 
             CheckDrinkAmount();
         }
@@ -157,6 +170,52 @@ public class DrinkingAmount : MonoBehaviour
     void OnDisable()
     {
         StopPourEffect(true);
+        StopDrinkingSound();
+    }
+
+    void SetupDrinkingSound()
+    {
+        if (drinkingAudioSource == null)
+        {
+            drinkingAudioSource = GetComponent<AudioSource>();
+        }
+
+        if (drinkingAudioSource == null)
+        {
+            return;
+        }
+
+        drinkingAudioSource.clip = drinkingSound;
+        drinkingAudioSource.outputAudioMixerGroup = sfxMixerGroup;
+        drinkingAudioSource.volume = drinkingSoundVolume;
+        drinkingAudioSource.loop = true;
+        drinkingAudioSource.playOnAwake = false;
+        drinkingAudioSource.spatialBlend = 0f;
+    }
+
+    void PlayDrinkingSound()
+    {
+        if (!playDrinkingSound)
+        {
+            return;
+        }
+
+        SetupDrinkingSound();
+
+        if (drinkingAudioSource == null || drinkingSound == null || drinkingAudioSource.isPlaying)
+        {
+            return;
+        }
+
+        drinkingAudioSource.Play();
+    }
+
+    void StopDrinkingSound()
+    {
+        if (drinkingAudioSource != null && drinkingAudioSource.isPlaying)
+        {
+            drinkingAudioSource.Stop();
+        }
     }
 
     void PlayPourEffect()
