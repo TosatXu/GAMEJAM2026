@@ -5924,6 +5924,7 @@ MonoBehaviour:
   aliveText: Huzzah!
   failedText: Huzzah...?
   minimumPotionQualityToRevive: 100
+  revival: {fileID: 2067880867189605675, guid: fa37cbb069c0b8548a745cd95def8558, type: 3}
 --- !u!4 &1390245434
 Transform:
   m_ObjectHideFlags: 0
@@ -6403,19 +6404,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -687.27
+      value: 241.72998
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -320
+      value: 203
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6447,11 +6448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 328.63
+      value: -135.87
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 140
+      value: -121.5
       objectReference: {fileID: 0}
     - target: {fileID: 116511917560730931, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6467,7 +6468,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_text
-      value: abacadabra
+      value: 'Recipe
+
+
+        [ ] 1 x Organ: ???
+
+        [ ] 1 x Liquid: ???
+
+        [
+        ] 1 x Plant: ???'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize

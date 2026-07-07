@@ -297,7 +297,7 @@ MonoBehaviour:
   npc2Sound: {fileID: 8300000, guid: 5f65781d85e833041b239164c4ee3d36, type: 3}
   npc3Sound: {fileID: 8300000, guid: 6f6812f2775b7134f8db9c224cef2b6a, type: 3}
   npcSoundVolume: 0.16
-  playNpcSoundOnAppear: 1
+  playNpcSoundOnAppear: 0
 --- !u!82 &6582231
 AudioSource:
   m_ObjectHideFlags: 0

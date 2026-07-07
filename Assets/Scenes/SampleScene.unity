@@ -5373,7 +5373,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4973493604333330131, guid: 985d52d42f6e00449bf3df97f9542eff, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 6418180475301049370, guid: f2e23ce59f73e8e489c9d467c3744aa9, type: 2}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6414,12 +6414,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: Brain
+        [ ] 1 x Organ: Heart
 
-        [ ] 1 x Liquid: Tears
+        [ ] 1 x Liquid: Aqua
+        Regia
 
-        [
-        ] 1 x Plant: Baneberry'
+        [ ] 1 x Plant: Ghost Orchid'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize

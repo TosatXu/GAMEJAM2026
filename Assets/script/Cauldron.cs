@@ -192,6 +192,6 @@ public class Cauldron : MonoBehaviour
             return;
         }
 
-        audioSource.PlayOneShot(dropSound, dropSoundVolume);
+        audioSource.Play();
     }
 }

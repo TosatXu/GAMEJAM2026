@@ -56,6 +56,8 @@ public class DrinkingAmount : MonoBehaviour
     bool isDrinking;
     bool hasFinished;
 
+    public GameObject revival;
+
     void OnEnable()
     {
         if (!Application.isPlaying)
@@ -751,6 +753,7 @@ public class DrinkingAmount : MonoBehaviour
 
         SetResultText(potionWorked ? aliveText : failedText);
         ShowNextButton();
+        Instantiate(revival);
     }
 
     bool DidPotionWork(bool goodDrinkingAmount)

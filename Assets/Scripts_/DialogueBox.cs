@@ -20,7 +20,7 @@ public class DialogueBox : MonoBehaviour
     public AudioClip npc2Sound;
     public AudioClip npc3Sound;
     [Range(0f, 1f)] public float npcSoundVolume = 0.8f;
-    public bool playNpcSoundOnAppear = true;
+    public bool playNpcSoundOnAppear = false;
 
     private void Start()
     {

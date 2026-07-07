@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-7183987266949073449
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_4_{-7183987266949073449}
+  m_AudioClip: {fileID: 8300000, guid: 1901bfe907f9dda409ee91c3e507f329, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4688623622745872918
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_3_{-4688623622745872918}
+  m_AudioClip: {fileID: 8300000, guid: c07e72d2c6cff4546b6da1776179be2a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4208743537504573368
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_6_{-4208743537504573368}
+  m_AudioClip: {fileID: 8300000, guid: ddb64eeda01287042bac60364bdeb8ee, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3921950947883117599
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_1_{-3921950947883117599}
+  m_AudioClip: {fileID: 8300000, guid: 5bab17983d93afe46928c2085e8cd56d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2673207338928874037
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_{-2673207338928874037}
+  m_AudioClip: {fileID: 8300000, guid: 9f134da600e42204780f2b18d38db1e0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1564521423076770311
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_2_{-1564521423076770311}
+  m_AudioClip: {fileID: 8300000, guid: 794ec58207bd6f44689c5a969b851a83, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4547923474041629216
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plops_5_{4547923474041629216}
+  m_AudioClip: {fileID: 8300000, guid: 1609a64081a003b43b2a83b053df48bc, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Audio Random Container
+  m_Volume: -4.3
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -2673207338928874037}
+  - {fileID: -3921950947883117599}
+  - {fileID: -1564521423076770311}
+  - {fileID: -4688623622745872918}
+  - {fileID: -7183987266949073449}
+  - {fileID: 4547923474041629216}
+  - {fileID: -4208743537504573368}
+  m_AvoidRepeatingLast: 1
+  m_PlaybackMode: 2
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
