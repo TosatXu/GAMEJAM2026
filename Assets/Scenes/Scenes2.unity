@@ -4955,33 +4955,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -269.723, y: 90, z: 270.002}
---- !u!1 &570793229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 473604077}
-  - component: {fileID: 473604080}
-  - component: {fileID: 473604079}
-  - component: {fileID: 473604078}
-  - component: {fileID: 473604081}
-  m_Layer: 5
-  m_Name: NextButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!224 &473604077
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473604076}
+  m_GameObject: {fileID: 570793229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1615831, y: 1.1615831, z: 1.1615831}
@@ -5001,7 +4981,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473604076}
+  m_GameObject: {fileID: 570793229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -5038,26 +5018,14 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 473604079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 473604081}
-        m_TargetAssemblyTypeName: ScreenButton, Assembly-CSharp
-        m_MethodName: switchScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &473604079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473604076}
+  m_GameObject: {fileID: 570793229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -5087,8 +5055,27 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473604076}
+  m_GameObject: {fileID: 570793229}
   m_CullTransparentMesh: 1
+--- !u!1 &570793229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473604077}
+  - component: {fileID: 473604080}
+  - component: {fileID: 473604079}
+  - component: {fileID: 473604078}
+  m_Layer: 5
+  m_Name: NextButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &586980236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5803,7 +5790,7 @@ MonoBehaviour:
   barFill: {fileID: 2069279080}
   fillSpeed: 40
   requiredDrinkPercent: 60
-  drinkTolerance: 5
+  drinkTolerance: 10
   nextButton: {fileID: 473604078}
   nextButtonStyleSource: {fileID: 1308820412}
   nextButtonStyleSourceName: BodyScreen
@@ -5819,14 +5806,14 @@ MonoBehaviour:
   verticalBarHeight: 3
   verticalBarWidth: 0.35
   targetLineWidth: 0.8
-  targetLineThickness: 0.06
+  targetLineThickness: 0.1
   barBackColor: {r: 0.12, g: 0.12, b: 0.12, a: 1}
   barFillColor: {r: 0.25, g: 0.9, b: 0.75, a: 1}
   targetLineColor: {r: 1, g: 0.2, b: 0.15, a: 1}
   resultText: {fileID: 0}
   waitingText: 
-  aliveText: Hes alive!
-  failedText: Hes alive?
+  aliveText: Huzzah!
+  failedText: Huzzah...?
   minimumPotionQualityToRevive: 100
 --- !u!4 &1390245434
 Transform:
@@ -6118,7 +6105,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.30000007, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1390245434}
@@ -6286,6 +6273,10 @@ PrefabInstance:
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_margin.z
       value: 36.98106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176910431353294613, guid: 5e02a191411776344901093c203c3962, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3447719555133167084, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_Name

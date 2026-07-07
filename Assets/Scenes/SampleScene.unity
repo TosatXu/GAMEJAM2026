@@ -654,12 +654,12 @@ MonoBehaviour:
   m_text: 'Recipe
 
 
-    [ ] 1 x Body: ???
+    [ ] 1 x Organ: ???
 
-    [ ] 1 x Bottle: ???
+    [ ] 1 x Liquid: ???
 
-    [ ] 1 x Plant:
-    ???'
+    [ ] 1 x
+    Plant: ???'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9547169, g: 0.93427014, b: 0.87005335, a: 1}
+  m_Color: {r: 0.58431375, g: 0.62352943, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4185,12 +4185,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Body: Brain
+        [ ] 1 x Organ: Heart
 
-        [ ] 1 x Bottle: Water
+        [ ] 1 x Liquid: Aqua
+        Regia
 
-        [
-        ] 1 x Plant: Baneberry'
+        [ ] 1 x Plant: Nettle'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize

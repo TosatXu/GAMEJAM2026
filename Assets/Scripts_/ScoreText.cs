@@ -8,6 +8,6 @@ public class ScoreText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        this.GetComponent<TextMeshProUGUI>().text = Convert.ToString(GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality);
+        this.GetComponent<TextMeshProUGUI>().text = Convert.ToString(Mathf.RoundToInt(GameObject.Find("RecipeRuntimeData").GetComponent<RecipeRuntimeData>().lastPotionQuality));
     }
 }
