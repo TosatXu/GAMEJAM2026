@@ -179,8 +179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press the Spacebar to progress dialogue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 793453140f5539246a14f0c5d60b2d96, type: 2}
+  m_sharedMaterial: {fileID: -5176308884260543999, guid: 793453140f5539246a14f0c5d60b2d96, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -204,14 +204,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -277,26 +277,17 @@ MonoBehaviour:
   - The Parent - Help her, please. Bring my baby back to me.
   - The Parent - She was an angel, the purest little angel. I want you to make her
     pure again.
-  exit1:
-  - 
-  - 
   intro2:
   - 
-  - The Widow - It was nine months this time. He must be getting better.
+  - The Widow - It was 9 months this time. He must be getting better.
   - 'The Widow - He needs more intelligence. '
   - 'The Widow - I''ll teach him not to slap a horse''s ass this time. '
-  exit2:
-  - 
-  - 
   intro3:
   - 
   - 'The Servant - It is my Master. He must''ve fallen down the stairs. He must''ve
     been drinking wine. It was his favourite, he drank it all of the time. '
   - 'The Servant - He was kind, a kind master. '
   - 'The Servant - Could you give him a heart? '
-  exit3:
-  - 
-  - 
   display: {fileID: 6582228}
 --- !u!1 &359273919
 GameObject:
@@ -357,8 +348,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next ->
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
+  m_sharedMaterial: {fileID: -7840755043571356538, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -793,7 +784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 20}
+  m_AnchoredPosition: {x: -100, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271452243
@@ -878,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.98490566, g: 0.9675651, b: 0.89756495, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1233,7 +1224,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5063602415152703841, guid: 1a25e53e70f56c74393927ed20192a9a, type: 3}
-  m_Color: {r: 0.63243145, g: 0.6415094, b: 0.6415094, a: 1}
+  m_Color: {r: 0.5622641, g: 0.5517084, b: 0.4911854, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
