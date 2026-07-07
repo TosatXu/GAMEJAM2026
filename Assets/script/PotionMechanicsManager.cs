@@ -1,34 +1,43 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PotionMechanicsManager : MonoBehaviour
 {
-    [Header("Current Recipe")]
-    public string requiredIngredientName = "heart";
-    public float requiredPercent = 30f;
-    public float percentTolerance = 5f;
+    public RecipeData recipeData;
 
-    [Header("Other Systems")]
     public TimingBar timingBar;
 
-    [Header("State")]
+    public GameObject nextButton;
+    public string drinkingSceneName = "DrinkingScene";
+
     public bool hasCorrectIngredient;
     public bool hasGoodFireTiming;
     public bool potionReady;
 
+    void Start()
+    {
+        if (nextButton != null)
+        {
+            nextButton.SetActive(false);
+        }
+    }
+
     public void ReceiveIngredient(IngredientPiece piece)
     {
-        if (piece == null)
+        if (piece == null || recipeData == null)
         {
             return;
         }
 
-        bool correctName = piece.ingredientName == requiredIngredientName;
-        bool correctPercent = piece.IsCloseToPercent(requiredPercent, percentTolerance);
+        bool correctName = piece.ingredientName == recipeData.requiredIngredientName;
+        bool correctPercent = piece.IsCloseToPercent(
+            recipeData.requiredIngredientPercent,
+            recipeData.ingredientTolerance
+        );
 
         if (correctName && correctPercent)
         {
             hasCorrectIngredient = true;
-
             Debug.Log("Correct ingredient. Start fire timing.");
 
             if (timingBar != null)
@@ -42,9 +51,9 @@ public class PotionMechanicsManager : MonoBehaviour
 
             Debug.Log(
                 "Wrong ingredient. Need: " +
-                requiredIngredientName +
+                recipeData.requiredIngredientName +
                 " " +
-                requiredPercent.ToString("0") +
+                recipeData.requiredIngredientPercent.ToString("0") +
                 "% | Got: " +
                 piece.ingredientName +
                 " " +
@@ -62,11 +71,27 @@ public class PotionMechanicsManager : MonoBehaviour
         {
             potionReady = true;
             Debug.Log("Potion is ready!");
+
+            if (nextButton != null)
+            {
+                nextButton.SetActive(true);
+            }
         }
         else
         {
             potionReady = false;
             Debug.Log("Potion failed.");
         }
+    }
+
+    public void GoToDrinkingScene()
+    {
+        if (!potionReady)
+        {
+            Debug.Log("Potion is not ready yet.");
+            return;
+        }
+
+        SceneManager.LoadScene(drinkingSceneName);
     }
 }
