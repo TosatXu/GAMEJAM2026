@@ -7,6 +7,9 @@ public class BackgroundMusic : MonoBehaviour
     public static BackgroundMusic Instance { get; private set; }
 
     public AudioClip musicClip;
+    public AudioClip music1;
+    public AudioClip music2;
+    public AudioClip music3;
     public AudioMixerGroup musicMixerGroup;
     [Range(0f, 1f)] public float volume = 0.7f;
     public bool playOnStart = true;
@@ -66,6 +69,8 @@ public class BackgroundMusic : MonoBehaviour
             return;
         }
 
+
+
         if (!audioSource.isPlaying)
         {
             audioSource.Play();
@@ -116,5 +121,10 @@ public class BackgroundMusic : MonoBehaviour
         audioSource.loop = loop;
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("a");
     }
 }
