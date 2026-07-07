@@ -10,6 +10,7 @@ public class Cauldron : MonoBehaviour
     public Sprite green;
     public Sprite brown;
     public Sprite tears;
+    public Sprite redZoneSuccessSprite;
 
     [Header("Drop Sound")]
     public AudioClip dropSound;
@@ -126,9 +127,9 @@ public class Cauldron : MonoBehaviour
 
     public void ShowPotionResult(bool ingredientsCorrect, bool fireTimingGood)
     {
-        if (ingredientsCorrect && fireTimingGood)
+        if (fireTimingGood)
         {
-            SetCauldronSprite(green);
+            SetCauldronSprite(redZoneSuccessSprite != null ? redZoneSuccessSprite : green);
         }
         else
         {
