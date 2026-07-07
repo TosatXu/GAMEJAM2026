@@ -119,12 +119,12 @@ TextureImporter:
       name: eyeball_0
       rect:
         serializedVersion: 2
-        x: 280
-        y: 246
-        width: 735
-        height: 1735
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,7 +146,7 @@ TextureImporter:
         width: 1347
         height: 1091
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 82155079bb1131f47be5f93be7abbf4d
     internalID: 0
     vertices: []
     indices: 

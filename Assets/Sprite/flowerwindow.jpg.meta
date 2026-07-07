@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1577de7f0324d0c40937a41de7394173
+guid: 7e35f6b1e10039b478bf52c66ee5d340
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4841499199407569964
-    second: dead_master_0
+      213: 3176111601664692300
+    second: vitali-adutskevich-Du7yq-3Ut_c-unsplash_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dead_master_0
+      name: vitali-adutskevich-Du7yq-3Ut_c-unsplash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 790
+        width: 6000
+        height: 4000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2cb609ded5703340800000000000000
-      internalID: 4841499199407569964
+      spriteID: c4098388ca0d31c20800000000000000
+      internalID: 3176111601664692300
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dead_master_0: 4841499199407569964
+      vitali-adutskevich-Du7yq-3Ut_c-unsplash_0: 3176111601664692300
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

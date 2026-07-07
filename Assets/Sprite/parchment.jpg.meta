@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1577de7f0324d0c40937a41de7394173
+guid: f60c56e920583924f861738617bbed7b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4841499199407569964
-    second: dead_master_0
+      213: 6402713001761206617
+    second: olga-thelavart-vS3idIiYxX0-unsplash_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dead_master_0
+      name: olga-thelavart-vS3idIiYxX0-unsplash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 790
+        width: 5000
+        height: 7000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2cb609ded5703340800000000000000
-      internalID: 4841499199407569964
+      spriteID: 95170c45d810bd850800000000000000
+      internalID: 6402713001761206617
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dead_master_0: 4841499199407569964
+      olga-thelavart-vS3idIiYxX0-unsplash_0: 6402713001761206617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

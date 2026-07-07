@@ -8,8 +8,6 @@ public class variableStore : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetInt("encounterNum", -1);
-
 
     }
 }
