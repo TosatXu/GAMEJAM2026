@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Recipe1
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   requiredBodyPartName: liver
-  requiredBottleName: aquaregia
+  requiredBottleName: water
   requiredPlantName: dreamlily
   requiredDrinkPercent: 40

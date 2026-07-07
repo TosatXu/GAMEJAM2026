@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Recipe3
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   requiredBodyPartName: heart
-  requiredBottleName: oilofvitriol
+  requiredBottleName: aquaregia
   requiredPlantName: nettle
   requiredDrinkPercent: 70

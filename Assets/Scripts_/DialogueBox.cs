@@ -10,6 +10,7 @@ public class DialogueBox : MonoBehaviour
     public string[] intro2 = new string[4];
     public string[] intro3 = new string[4];
     public TextMeshProUGUI display;
+    public GameObject nextButton;
 
     private void Start()
     {
@@ -52,6 +53,11 @@ public class DialogueBox : MonoBehaviour
                 dialogueNum = Mathf.Clamp(dialogueNum, 0, 3);
                 display.text = intro3[dialogueNum];
             }
+        }
+
+        if (dialogueNum >= 3)
+        {
+            nextButton.SetActive(true);
         }
     }
 }

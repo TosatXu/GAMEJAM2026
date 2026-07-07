@@ -89,16 +89,16 @@ public class RecipeText : MonoBehaviour
         {
             recipeText.text =
                 "Recipe\n\n" +
-                GetLine(false, "Body", "???") + "\n" +
-                GetLine(false, "Bottle", "???") + "\n" +
+                GetLine(false, "Organ", "???") + "\n" +
+                GetLine(false, "Liquid", "???") + "\n" +
                 GetLine(false, "Plant", "???");
             return;
         }
 
         recipeText.text =
             "Recipe\n\n" +
-            GetLine(hasBodyPart, "Body", currentRecipe.requiredBodyPartName) + "\n" +
-            GetLine(hasBottle, "Bottle", currentRecipe.requiredBottleName) + "\n" +
+            GetLine(hasBodyPart, "Organ", currentRecipe.requiredBodyPartName) + "\n" +
+            GetLine(hasBottle, "Liquid", currentRecipe.requiredBottleName) + "\n" +
             GetLine(hasPlant, "Plant", currentRecipe.requiredPlantName);
     }
 

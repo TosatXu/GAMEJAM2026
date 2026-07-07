@@ -713,6 +713,6 @@ public class DrinkingAmount : MonoBehaviour
 
     public void GoToCounterScene()
     {
-        SceneManager.LoadScene(counterSceneName);
+        SceneManager.LoadScene(3);
     }
 }
