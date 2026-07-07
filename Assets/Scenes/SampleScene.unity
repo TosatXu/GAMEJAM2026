@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 262086509}
   - component: {fileID: 262086511}
   - component: {fileID: 262086510}
+  - component: {fileID: 262086512}
   m_Layer: 5
   m_Name: Recipe text
   m_TagString: Untagged
@@ -558,6 +559,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262086508}
   m_CullTransparentMesh: 1
+--- !u!114 &262086512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262086508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2816d455a488c694fb9b805c6c94aa3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeText
+  recipe1: ' 1 x Liver <br> 1 x ?Liquid <br> 1 x ?Material <br> 1 x Dreamlily'
+  recipe2: ' 1 x ?Organ <br> 1 x Salted Tears <br> 1 x Bat Fang'
+  recipe3: ' 1 x Heart <br> 1 x Aqua Regia <br> 1 x Baneberry <br> 1 x ?Material '
 --- !u!1 &286939584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,7 +1714,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1123066401}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6209397
+  m_Size: 0.62093973
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
