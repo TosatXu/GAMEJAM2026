@@ -16,9 +16,24 @@ public class PotionMechanicsManager : MonoBehaviour
 
     void Start()
     {
+        if (RecipeRuntimeData.Instance != null && RecipeRuntimeData.Instance.currentRecipe != null)
+        {
+            recipeData = RecipeRuntimeData.Instance.currentRecipe;
+        }
+
         if (nextButton != null)
         {
             nextButton.SetActive(false);
+        }
+    }
+
+    public void SetRecipe(RecipeData newRecipe)
+    {
+        recipeData = newRecipe;
+
+        if (recipeData != null)
+        {
+            Debug.Log("Potion machine recipe set to: " + recipeData.name);
         }
     }
 
