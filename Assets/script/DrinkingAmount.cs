@@ -14,6 +14,8 @@ public class DrinkingAmount : MonoBehaviour
     public float requiredDrinkPercent = 60f;
     public float drinkTolerance = 5f;
     public Button nextButton;
+    public Button nextButtonStyleSource;
+    public string nextButtonStyleSourceName = "BodyScreen";
     public string counterSceneName = "Counter";
     public Vector2 nextButtonPosition = new Vector2(-150f, 40f);
     public Vector2 nextButtonSize = new Vector2(160f, 30f);
@@ -148,7 +150,8 @@ public class DrinkingAmount : MonoBehaviour
     {
         ApplyPreviewRecipePercent();
         SetupDrinkBar();
-        currentDrinkPercent = 0f;
+        SetupNextButtonPreview();
+        currentDrinkPercent = requiredDrinkPercent;
         UpdateBar();
     }
 
@@ -343,6 +346,57 @@ public class DrinkingAmount : MonoBehaviour
         }
     }
 
+    void SetupNextButtonPreview()
+    {
+        if (Application.isPlaying)
+        {
+            return;
+        }
+
+        bool changed = false;
+
+        if (nextButton == null)
+        {
+            Button foundButton = FindNextButtonInScene();
+            if (foundButton != null)
+            {
+                nextButton = foundButton;
+                changed = true;
+            }
+        }
+
+        if (nextButton == null)
+        {
+            nextButton = CreateNextButton();
+            changed = nextButton != null;
+        }
+
+        if (nextButton != null && !nextButton.gameObject.activeSelf)
+        {
+            nextButton.gameObject.SetActive(true);
+            changed = true;
+        }
+
+        if (nextButton != null)
+        {
+            ApplyNextButtonStyle(nextButton);
+            changed = true;
+        }
+
+#if UNITY_EDITOR
+        if (changed)
+        {
+            EditorUtility.SetDirty(this);
+            if (nextButton != null)
+            {
+                EditorUtility.SetDirty(nextButton.gameObject);
+            }
+
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+        }
+#endif
+    }
+
     void SetupNextButton()
     {
         if (nextButton == null)
@@ -363,6 +417,7 @@ public class DrinkingAmount : MonoBehaviour
 
         nextButton.onClick.RemoveListener(GoToCounterScene);
         nextButton.onClick.AddListener(GoToCounterScene);
+        ApplyNextButtonStyle(nextButton);
     }
 
     Button FindNextButtonInScene()
@@ -381,7 +436,7 @@ public class DrinkingAmount : MonoBehaviour
 
     Button CreateNextButton()
     {
-        Canvas canvas = FindFirstObjectByType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>(FindObjectsInactive.Include);
         if (canvas == null)
         {
             return null;
@@ -389,6 +444,13 @@ public class DrinkingAmount : MonoBehaviour
 
         GameObject buttonObject = new GameObject("NextButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         buttonObject.transform.SetParent(canvas.transform, false);
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            Undo.RegisterCreatedObjectUndo(buttonObject, "Create Next Button Preview");
+        }
+#endif
 
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
         buttonRect.anchorMin = new Vector2(1f, 0f);
@@ -419,7 +481,126 @@ public class DrinkingAmount : MonoBehaviour
         buttonText.alignment = TextAlignmentOptions.Center;
         buttonText.raycastTarget = false;
 
+        ApplyNextButtonStyle(button);
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorUtility.SetDirty(buttonObject);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(canvas.gameObject.scene);
+        }
+#endif
+
         return button;
+    }
+
+    void ApplyNextButtonStyle(Button targetButton)
+    {
+        Button sourceButton = GetNextButtonStyleSource();
+        if (sourceButton == null || targetButton == null || sourceButton == targetButton)
+        {
+            return;
+        }
+
+        RectTransform sourceRect = sourceButton.transform as RectTransform;
+        RectTransform targetRect = targetButton.transform as RectTransform;
+        if (sourceRect != null && targetRect != null)
+        {
+            targetRect.sizeDelta = sourceRect.sizeDelta;
+        }
+
+        Image sourceImage = sourceButton.GetComponent<Image>();
+        Image targetImage = targetButton.GetComponent<Image>();
+        if (sourceImage != null && targetImage != null)
+        {
+            targetImage.sprite = sourceImage.sprite;
+            targetImage.type = sourceImage.type;
+            targetImage.preserveAspect = sourceImage.preserveAspect;
+            targetImage.fillCenter = sourceImage.fillCenter;
+            targetImage.fillMethod = sourceImage.fillMethod;
+            targetImage.fillAmount = sourceImage.fillAmount;
+            targetImage.fillClockwise = sourceImage.fillClockwise;
+            targetImage.fillOrigin = sourceImage.fillOrigin;
+            targetImage.useSpriteMesh = sourceImage.useSpriteMesh;
+            targetImage.pixelsPerUnitMultiplier = sourceImage.pixelsPerUnitMultiplier;
+            targetImage.color = sourceImage.color;
+            targetImage.material = sourceImage.material;
+            targetImage.raycastTarget = sourceImage.raycastTarget;
+            targetImage.maskable = sourceImage.maskable;
+            targetButton.targetGraphic = targetImage;
+        }
+
+        targetButton.transition = sourceButton.transition;
+        targetButton.colors = sourceButton.colors;
+        targetButton.spriteState = sourceButton.spriteState;
+        targetButton.animationTriggers = sourceButton.animationTriggers;
+        targetButton.navigation = sourceButton.navigation;
+        targetButton.interactable = sourceButton.interactable;
+
+        TextMeshProUGUI sourceText = sourceButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        TextMeshProUGUI targetText = targetButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        if (sourceText != null && targetText != null)
+        {
+            string label = string.IsNullOrEmpty(targetText.text) ? "Next" : targetText.text;
+            RectTransform sourceTextRect = sourceText.transform as RectTransform;
+            RectTransform targetTextRect = targetText.transform as RectTransform;
+            if (sourceTextRect != null && targetTextRect != null)
+            {
+                targetTextRect.anchorMin = sourceTextRect.anchorMin;
+                targetTextRect.anchorMax = sourceTextRect.anchorMax;
+                targetTextRect.pivot = sourceTextRect.pivot;
+                targetTextRect.anchoredPosition = sourceTextRect.anchoredPosition;
+                targetTextRect.sizeDelta = sourceTextRect.sizeDelta;
+                targetTextRect.offsetMin = sourceTextRect.offsetMin;
+                targetTextRect.offsetMax = sourceTextRect.offsetMax;
+            }
+
+            targetText.font = sourceText.font;
+            targetText.fontSharedMaterial = sourceText.fontSharedMaterial;
+            targetText.fontSize = sourceText.fontSize;
+            targetText.fontStyle = sourceText.fontStyle;
+            targetText.enableAutoSizing = sourceText.enableAutoSizing;
+            targetText.fontSizeMin = sourceText.fontSizeMin;
+            targetText.fontSizeMax = sourceText.fontSizeMax;
+            targetText.color = sourceText.color;
+            targetText.alignment = sourceText.alignment;
+            targetText.margin = sourceText.margin;
+            targetText.raycastTarget = sourceText.raycastTarget;
+            targetText.text = label;
+        }
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorUtility.SetDirty(targetButton);
+            EditorUtility.SetDirty(targetButton.gameObject);
+        }
+#endif
+    }
+
+    Button GetNextButtonStyleSource()
+    {
+        if (nextButtonStyleSource != null)
+        {
+            return nextButtonStyleSource;
+        }
+
+        if (string.IsNullOrEmpty(nextButtonStyleSourceName))
+        {
+            return null;
+        }
+
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (string.Equals(buttons[i].name, nextButtonStyleSourceName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                nextButtonStyleSource = buttons[i];
+                return nextButtonStyleSource;
+            }
+        }
+
+        return null;
     }
 
     void HideNextButton()
