@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -7,6 +8,9 @@ public class BackgroundMusic : MonoBehaviour
     public static BackgroundMusic Instance { get; private set; }
 
     public AudioClip musicClip;
+    public AudioClip music1;
+    public AudioClip music2;
+    public AudioClip music3;
     public AudioMixerGroup musicMixerGroup;
     [Range(0f, 1f)] public float volume = 0.7f;
     public bool playOnStart = true;
@@ -20,6 +24,19 @@ public class BackgroundMusic : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (PlayerPrefs.GetInt("encounterNum") == 0)
+        {
+            musicClip = music1;
+        }
+        if (PlayerPrefs.GetInt("encounterNum") == 1)
+        {
+            musicClip = music2;
+        }
+        if (PlayerPrefs.GetInt("encounterNum") == 2)
+        {
+            musicClip = music3;
+        }
 
         if (keepSingleInstance && Instance != null && Instance != this)
         {
@@ -65,6 +82,8 @@ public class BackgroundMusic : MonoBehaviour
             Debug.LogWarning("BackgroundMusic has no music clip assigned.", this);
             return;
         }
+
+
 
         if (!audioSource.isPlaying)
         {
@@ -117,4 +136,5 @@ public class BackgroundMusic : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
     }
+
 }
