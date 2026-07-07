@@ -654,12 +654,12 @@ MonoBehaviour:
   m_text: 'Recipe
 
 
-    [ ] 1 x Body: ???
+    [ ] 1 x Organ: ???
 
-    [ ] 1 x Bottle: ???
+    [ ] 1 x Liquid: ???
 
-    [ ] 1 x Plant:
-    ???'
+    [ ] 1 x
+    Plant: ???'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -772,7 +772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &279803200
 Animator:
   serializedVersion: 7
@@ -1332,7 +1332,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.27881095, g: 0.86415094, b: 0.5359015, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9547169, g: 0.93427014, b: 0.87005335, a: 1}
+  m_Color: {r: 0.58431375, g: 0.62352943, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3143,7 +3143,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.011764706}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3234,8 +3234,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7443756053782179069, guid: b0ab9043e18c16f4284b660fe70df90d, type: 3}
-  m_Color: {r: 0.764151, g: 0.7028747, b: 0.7028747, a: 1}
+  m_Sprite: {fileID: -2310634361208429509, guid: 110dbc913f3238443a032f5400ec13e0, type: 3}
+  m_Color: {r: 0.4943396, g: 0.3796155, b: 0.3796155, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3254,8 +3254,8 @@ Transform:
   m_GameObject: {fileID: 1696966553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.89, y: 0.69, z: 0}
+  m_LocalScale: {x: 2.4320643, y: 2.507283, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3832,7 +3832,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.16862746}
+  m_Color: {r: 0.5999999, g: 0.45622632, b: 0.45622632, a: 0.16862746}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3879,6 +3879,7 @@ MonoBehaviour:
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
   recipeText: {fileID: 1303648323}
+  cauldronVisual: {fileID: 0}
   hasBodyPart: 0
   hasBottle: 0
   hasPlant: 0
@@ -4017,11 +4018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 228.3706
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 352.511
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4053,7 +4054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 23.360016
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4086,6 +4087,22 @@ PrefabInstance:
     - target: {fileID: 5487091017683862239, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079918455696185252, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079918455696185252, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18112312
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079918455696185252, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079918455696185252, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
+      propertyPath: m_Color.r
+      value: 0.124919906
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4185,11 +4202,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: ???
+        [ ] 1 x Organ: Heart
 
-        [ ] 1 x Liquid: ???
+        [ ] 1 x Liquid: Aqua
+        Regia
 
-        [ ] 1 x Plant: Dream Lily'
+        [ ] 1 x Plant: Nettle'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize

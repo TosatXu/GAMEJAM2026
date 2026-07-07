@@ -511,9 +511,12 @@ MonoBehaviour:
   recipeData: {fileID: 0}
   timingBar: {fileID: 751665758}
   nextButton: {fileID: 409887928}
+  nextButtonStyleSource: {fileID: 1468271370}
+  nextButtonStyleSourceName: BodyScreen
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1215022140}
   recipeText: {fileID: 301008908}
+  cauldronVisual: {fileID: 0}
   hasBodyPart: 0
   hasBottle: 0
   hasPlant: 0
@@ -588,8 +591,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
+  m_sharedMaterial: {fileID: -7840755043571356538, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -759,12 +762,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Organ: ???
+        [ ] 1 x Organ: Liver
 
-        [ ] 1 x Liquid: ???
+        [ ] 1 x Liquid: Water
 
         [
-        ] 1 x Plant: ???'
+        ] 1 x Plant: Dream Lily'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_RaycastTarget
@@ -2774,6 +2777,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1384783076961840416, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
   m_PrefabInstance: {fileID: 1468271368}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1468271370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6728029334816854033, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
+  m_PrefabInstance: {fileID: 1468271368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1678711154
 GameObject:
   m_ObjectHideFlags: 0
