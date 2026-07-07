@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class variableStore : MonoBehaviour
 {
-    public int encounterNum;
 
     void Awake()
     {
+
         DontDestroyOnLoad(gameObject);
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("encounterNum", -1);
+
+
     }
 }
