@@ -645,13 +645,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Recipe text here
+  m_text: 'Recipe
+
+
+    [ ] 1 x Body: ???
+
+    [ ] 1 x Bottle: ???
+
+    [ ] 1 x Plant:
+    ???'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1758,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58431375, g: 0.62352943, b: 0.7176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1800,7 +1808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293, y: -137}
+  m_AnchoredPosition: {x: 293, y: -169.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &722924994
@@ -2371,8 +2379,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
+  m_sharedMaterial: {fileID: -7840755043571356538, guid: 48c9430f275eee941b2277a25fb908d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3000,6 +3008,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1529950459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6728029334816854033, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
+  m_PrefabInstance: {fileID: 7197149585640896151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1584245805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,6 +3817,8 @@ MonoBehaviour:
   recipeData: {fileID: 0}
   timingBar: {fileID: 1411911951}
   nextButton: {fileID: 702143214}
+  nextButtonStyleSource: {fileID: 1529950459}
+  nextButtonStyleSourceName: BodyScreen
   drinkingSceneName: Scenes2
   recipeDisplayUI: {fileID: 1835899329}
   recipeText: {fileID: 1303648323}
@@ -4107,12 +4128,12 @@ PrefabInstance:
       value: 'Recipe
 
 
-        [ ] 1 x Body: ???
+        [ ] 1 x Body: Brain
 
-        [ ] 1 x Bottle: ???
+        [ ] 1 x Bottle: Water
 
         [
-        ] 1 x Plant: ???'
+        ] 1 x Plant: Baneberry'
       objectReference: {fileID: 0}
     - target: {fileID: 1865600142989518428, guid: 5e02a191411776344901093c203c3962, type: 3}
       propertyPath: m_fontSize
@@ -4283,6 +4304,14 @@ PrefabInstance:
     - target: {fileID: 6686751664192182586, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
       propertyPath: m_Color.r
       value: 0.58508366
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859547882044967872, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336322438457271755, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,4 +15,4 @@ MonoBehaviour:
   requiredBodyPartName: heart
   requiredBottleName: oilofvitriol
   requiredPlantName: nettle
-  requiredDrinkPercent: 40
+  requiredDrinkPercent: 70

@@ -17,20 +17,9 @@ public class RecipeRandomizer : MonoBehaviour
 
     public void PickRecipeForCurrentEncounter()
     {
-        if (possibleRecipes == null || possibleRecipes.Length == 0)
-        {
-            Debug.LogWarning("No recipes in RecipeRandomizer.");
-            return;
-        }
-
-        int encounterNumber = PlayerPrefs.GetInt("encounterNum", 0);
-        int recipeCount = Mathf.Min(possibleRecipes.Length, 3);
-        int recipeIndex = GetPositiveModulo(encounterNumber, recipeCount);
-        RecipeData selectedRecipe = possibleRecipes[recipeIndex];
-
+        RecipeData selectedRecipe = GetRecipeForCurrentEncounter();
         if (selectedRecipe == null)
         {
-            Debug.LogWarning("Selected recipe slot is empty: " + recipeIndex, this);
             return;
         }
 
@@ -48,10 +37,42 @@ public class RecipeRandomizer : MonoBehaviour
 
         Debug.Log(
             "Selected recipe for NPC " +
-            (recipeIndex + 1) +
+            (GetCurrentEncounterRecipeIndex() + 1) +
             ": " +
             selectedRecipe.name
         );
+    }
+
+    public RecipeData GetRecipeForCurrentEncounter()
+    {
+        if (possibleRecipes == null || possibleRecipes.Length == 0)
+        {
+            Debug.LogWarning("No recipes in RecipeRandomizer.", this);
+            return null;
+        }
+
+        int recipeIndex = GetCurrentEncounterRecipeIndex();
+        RecipeData selectedRecipe = possibleRecipes[recipeIndex];
+
+        if (selectedRecipe == null)
+        {
+            Debug.LogWarning("Selected recipe slot is empty: " + recipeIndex, this);
+            return null;
+        }
+
+        return selectedRecipe;
+    }
+
+    public int GetCurrentEncounterRecipeIndex()
+    {
+        if (possibleRecipes == null || possibleRecipes.Length == 0)
+        {
+            return 0;
+        }
+
+        int encounterNumber = PlayerPrefs.GetInt("encounterNum", 0);
+        int recipeCount = Mathf.Min(possibleRecipes.Length, 3);
+        return GetPositiveModulo(encounterNumber, recipeCount);
     }
 
     int GetPositiveModulo(int value, int modulo)
