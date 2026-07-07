@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -566,10 +566,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 118572996}
   - {fileID: 463197119}
   - {fileID: 6507265380711981828}
   - {fileID: 620666029}
-  - {fileID: 118572996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1914,7 +1914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 23.36
+      value: 23.360016
       objectReference: {fileID: 0}
     - target: {fileID: 4250571588110141606, guid: 4216012c3ee261b479acaa9287d68552, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2133,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1384783076961840416, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.78
+      value: 2.7799988
       objectReference: {fileID: 0}
     - target: {fileID: 1384783076961840416, guid: f1587c9cbf43b9a4f9d2ffae580dd6b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
