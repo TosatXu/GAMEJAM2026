@@ -349,9 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3ed5570ff2d9f4c9fd39d28d1fd573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionMechanicsManager
-  requiredIngredientName: heart
-  requiredPercent: 30
-  percentTolerance: 5
+  recipeData: {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
   timingBar: {fileID: 751665758}
   nextButton: {fileID: 409887928}
   drinkingSceneName: Scenes2

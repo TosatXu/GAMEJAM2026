@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8503c5b8c7ceb4695b5e0739379eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinkingAmount
-  recipeData: {fileID: 0}
+  recipeData: {fileID: 11400000, guid: 28f0f2610e3165e469909b9ebf0c3c81, type: 2}
   barFill: {fileID: 2069279080}
   fillSpeed: 40
 --- !u!4 &1390245434
