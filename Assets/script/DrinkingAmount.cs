@@ -2,7 +2,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+[ExecuteAlways]
 public class DrinkingAmount : MonoBehaviour
 {
     public Transform barFill;
@@ -10,9 +14,25 @@ public class DrinkingAmount : MonoBehaviour
     public float requiredDrinkPercent = 60f;
     public float drinkTolerance = 5f;
     public Button nextButton;
+    public Button nextButtonStyleSource;
+    public string nextButtonStyleSourceName = "BodyScreen";
     public string counterSceneName = "Counter";
     public Vector2 nextButtonPosition = new Vector2(-150f, 40f);
     public Vector2 nextButtonSize = new Vector2(160f, 30f);
+
+    [Header("Vertical Drink Bar")]
+    public RecipeData previewRecipeData;
+    public Transform barBack;
+    public Transform targetLine;
+    public bool useVerticalBar = true;
+    public float barBottomLocalY = -1.5f;
+    public float verticalBarHeight = 3f;
+    public float verticalBarWidth = 0.35f;
+    public float targetLineWidth = 0.8f;
+    public float targetLineThickness = 0.06f;
+    public Color barBackColor = new Color(0.12f, 0.12f, 0.12f, 1f);
+    public Color barFillColor = new Color(0.25f, 0.9f, 0.75f, 1f);
+    public Color targetLineColor = new Color(1f, 0.2f, 0.15f, 1f);
 
     [Header("Result Text")]
     public TextMeshProUGUI resultText;
@@ -25,14 +45,61 @@ public class DrinkingAmount : MonoBehaviour
     bool isDrinking;
     bool hasFinished;
 
+    void OnEnable()
+    {
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+        }
+    }
+
+    void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorApplication.delayCall -= DelayedRefreshDrinkBarPreview;
+            EditorApplication.delayCall += DelayedRefreshDrinkBarPreview;
+        }
+#else
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+        }
+#endif
+    }
+
+#if UNITY_EDITOR
+    void DelayedRefreshDrinkBarPreview()
+    {
+        if (this == null || Application.isPlaying)
+        {
+            return;
+        }
+
+        RefreshDrinkBarPreview();
+    }
+#endif
+
     void Awake()
     {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
         SetupResultText();
         SetResultText(waitingText);
     }
 
     void Start()
     {
+        if (!Application.isPlaying)
+        {
+            RefreshDrinkBarPreview();
+            return;
+        }
+
         SetupResultText();
         SetResultText(waitingText);
         SetupNextButton();
@@ -42,14 +109,19 @@ public class DrinkingAmount : MonoBehaviour
         {
             requiredDrinkPercent = RecipeRuntimeData.Instance.currentRecipe.requiredDrinkPercent;
         }
+        else
+        {
+            ApplyPreviewRecipePercent();
+        }
 
+        SetupDrinkBar();
         currentDrinkPercent = 0f;
         UpdateBar();
     }
 
     void Update()
     {
-        if (hasFinished)
+        if (!Application.isPlaying || hasFinished)
         {
             return;
         }
@@ -71,6 +143,23 @@ public class DrinkingAmount : MonoBehaviour
             isDrinking = false;
             hasFinished = true;
             CheckDrinkAmount();
+        }
+    }
+
+    void RefreshDrinkBarPreview()
+    {
+        ApplyPreviewRecipePercent();
+        SetupDrinkBar();
+        SetupNextButtonPreview();
+        currentDrinkPercent = requiredDrinkPercent;
+        UpdateBar();
+    }
+
+    void ApplyPreviewRecipePercent()
+    {
+        if (previewRecipeData != null)
+        {
+            requiredDrinkPercent = previewRecipeData.requiredDrinkPercent;
         }
     }
 
@@ -122,6 +211,192 @@ public class DrinkingAmount : MonoBehaviour
         }
     }
 
+    void SetupDrinkBar()
+    {
+        if (barFill == null)
+        {
+            barFill = FindChildByName(transform, "BarFill");
+        }
+
+        if (barBack == null)
+        {
+            barBack = FindChildByName(transform, "BarBack");
+        }
+
+        if (!useVerticalBar)
+        {
+            UpdateTargetLine();
+            return;
+        }
+
+        SetupBarPart(barBack, verticalBarWidth, verticalBarHeight, barBottomLocalY + verticalBarHeight * 0.5f, barBackColor);
+        SetupBarPart(barFill, verticalBarWidth, 0f, barBottomLocalY, barFillColor);
+        SetupTargetLine();
+    }
+
+    Transform FindChildByName(Transform root, string childName)
+    {
+        for (int i = 0; i < root.childCount; i++)
+        {
+            Transform child = root.GetChild(i);
+            if (child.name == childName)
+            {
+                return child;
+            }
+        }
+
+        return null;
+    }
+
+    void SetupBarPart(Transform barPart, float width, float height, float localY, Color color)
+    {
+        if (barPart == null)
+        {
+            return;
+        }
+
+        barPart.localScale = new Vector3(width, height, barPart.localScale.z);
+        barPart.localPosition = new Vector3(0f, localY, barPart.localPosition.z);
+
+        SpriteRenderer renderer = barPart.GetComponent<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.color = color;
+
+            if (barPart == barFill && barBack != null && barBack.TryGetComponent(out SpriteRenderer backRenderer))
+            {
+                renderer.sortingLayerID = backRenderer.sortingLayerID;
+                renderer.sortingOrder = backRenderer.sortingOrder + 1;
+            }
+        }
+    }
+
+    void SetupTargetLine()
+    {
+        if (targetLine == null)
+        {
+            targetLine = FindChildByName(transform, "TargetLine");
+        }
+
+        if (targetLine == null)
+        {
+            targetLine = CreateTargetLine();
+        }
+
+        UpdateTargetLine();
+    }
+
+    Transform CreateTargetLine()
+    {
+        GameObject targetLineObject = new GameObject("TargetLine");
+        targetLineObject.transform.SetParent(transform, false);
+
+        SpriteRenderer targetRenderer = targetLineObject.AddComponent<SpriteRenderer>();
+        SpriteRenderer sourceRenderer = GetSourceBarRenderer();
+
+        if (sourceRenderer != null)
+        {
+            targetRenderer.sprite = sourceRenderer.sprite;
+            targetRenderer.sortingLayerID = sourceRenderer.sortingLayerID;
+            targetRenderer.sortingOrder = sourceRenderer.sortingOrder + 2;
+        }
+
+        targetRenderer.color = targetLineColor;
+
+#if UNITY_EDITOR
+        Undo.RegisterCreatedObjectUndo(targetLineObject, "Create Drink Target Line");
+        EditorUtility.SetDirty(this);
+        UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+#endif
+
+        return targetLineObject.transform;
+    }
+
+    SpriteRenderer GetSourceBarRenderer()
+    {
+        if (barBack != null && barBack.TryGetComponent(out SpriteRenderer backRenderer))
+        {
+            return backRenderer;
+        }
+
+        if (barFill != null && barFill.TryGetComponent(out SpriteRenderer fillRenderer))
+        {
+            return fillRenderer;
+        }
+
+        return null;
+    }
+
+    void UpdateTargetLine()
+    {
+        if (targetLine == null)
+        {
+            return;
+        }
+
+        float target01 = Mathf.Clamp01(requiredDrinkPercent / 100f);
+        float targetY = barBottomLocalY + verticalBarHeight * target01;
+        targetLine.localPosition = new Vector3(0f, targetY, targetLine.localPosition.z);
+        targetLine.localScale = new Vector3(targetLineWidth, targetLineThickness, targetLine.localScale.z == 0f ? 1f : targetLine.localScale.z);
+
+        SpriteRenderer targetRenderer = targetLine.GetComponent<SpriteRenderer>();
+        if (targetRenderer != null)
+        {
+            targetRenderer.color = targetLineColor;
+        }
+    }
+
+    void SetupNextButtonPreview()
+    {
+        if (Application.isPlaying)
+        {
+            return;
+        }
+
+        bool changed = false;
+
+        if (nextButton == null)
+        {
+            Button foundButton = FindNextButtonInScene();
+            if (foundButton != null)
+            {
+                nextButton = foundButton;
+                changed = true;
+            }
+        }
+
+        if (nextButton == null)
+        {
+            nextButton = CreateNextButton();
+            changed = nextButton != null;
+        }
+
+        if (nextButton != null && !nextButton.gameObject.activeSelf)
+        {
+            nextButton.gameObject.SetActive(true);
+            changed = true;
+        }
+
+        if (nextButton != null)
+        {
+            ApplyNextButtonStyle(nextButton);
+            changed = true;
+        }
+
+#if UNITY_EDITOR
+        if (changed)
+        {
+            EditorUtility.SetDirty(this);
+            if (nextButton != null)
+            {
+                EditorUtility.SetDirty(nextButton.gameObject);
+            }
+
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+        }
+#endif
+    }
+
     void SetupNextButton()
     {
         if (nextButton == null)
@@ -142,6 +417,7 @@ public class DrinkingAmount : MonoBehaviour
 
         nextButton.onClick.RemoveListener(GoToCounterScene);
         nextButton.onClick.AddListener(GoToCounterScene);
+        ApplyNextButtonStyle(nextButton);
     }
 
     Button FindNextButtonInScene()
@@ -160,7 +436,7 @@ public class DrinkingAmount : MonoBehaviour
 
     Button CreateNextButton()
     {
-        Canvas canvas = FindFirstObjectByType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>(FindObjectsInactive.Include);
         if (canvas == null)
         {
             return null;
@@ -168,6 +444,13 @@ public class DrinkingAmount : MonoBehaviour
 
         GameObject buttonObject = new GameObject("NextButton", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
         buttonObject.transform.SetParent(canvas.transform, false);
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            Undo.RegisterCreatedObjectUndo(buttonObject, "Create Next Button Preview");
+        }
+#endif
 
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
         buttonRect.anchorMin = new Vector2(1f, 0f);
@@ -198,7 +481,126 @@ public class DrinkingAmount : MonoBehaviour
         buttonText.alignment = TextAlignmentOptions.Center;
         buttonText.raycastTarget = false;
 
+        ApplyNextButtonStyle(button);
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorUtility.SetDirty(buttonObject);
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(canvas.gameObject.scene);
+        }
+#endif
+
         return button;
+    }
+
+    void ApplyNextButtonStyle(Button targetButton)
+    {
+        Button sourceButton = GetNextButtonStyleSource();
+        if (sourceButton == null || targetButton == null || sourceButton == targetButton)
+        {
+            return;
+        }
+
+        RectTransform sourceRect = sourceButton.transform as RectTransform;
+        RectTransform targetRect = targetButton.transform as RectTransform;
+        if (sourceRect != null && targetRect != null)
+        {
+            targetRect.sizeDelta = sourceRect.sizeDelta;
+        }
+
+        Image sourceImage = sourceButton.GetComponent<Image>();
+        Image targetImage = targetButton.GetComponent<Image>();
+        if (sourceImage != null && targetImage != null)
+        {
+            targetImage.sprite = sourceImage.sprite;
+            targetImage.type = sourceImage.type;
+            targetImage.preserveAspect = sourceImage.preserveAspect;
+            targetImage.fillCenter = sourceImage.fillCenter;
+            targetImage.fillMethod = sourceImage.fillMethod;
+            targetImage.fillAmount = sourceImage.fillAmount;
+            targetImage.fillClockwise = sourceImage.fillClockwise;
+            targetImage.fillOrigin = sourceImage.fillOrigin;
+            targetImage.useSpriteMesh = sourceImage.useSpriteMesh;
+            targetImage.pixelsPerUnitMultiplier = sourceImage.pixelsPerUnitMultiplier;
+            targetImage.color = sourceImage.color;
+            targetImage.material = sourceImage.material;
+            targetImage.raycastTarget = sourceImage.raycastTarget;
+            targetImage.maskable = sourceImage.maskable;
+            targetButton.targetGraphic = targetImage;
+        }
+
+        targetButton.transition = sourceButton.transition;
+        targetButton.colors = sourceButton.colors;
+        targetButton.spriteState = sourceButton.spriteState;
+        targetButton.animationTriggers = sourceButton.animationTriggers;
+        targetButton.navigation = sourceButton.navigation;
+        targetButton.interactable = sourceButton.interactable;
+
+        TextMeshProUGUI sourceText = sourceButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        TextMeshProUGUI targetText = targetButton.GetComponentInChildren<TextMeshProUGUI>(true);
+        if (sourceText != null && targetText != null)
+        {
+            string label = string.IsNullOrEmpty(targetText.text) ? "Next" : targetText.text;
+            RectTransform sourceTextRect = sourceText.transform as RectTransform;
+            RectTransform targetTextRect = targetText.transform as RectTransform;
+            if (sourceTextRect != null && targetTextRect != null)
+            {
+                targetTextRect.anchorMin = sourceTextRect.anchorMin;
+                targetTextRect.anchorMax = sourceTextRect.anchorMax;
+                targetTextRect.pivot = sourceTextRect.pivot;
+                targetTextRect.anchoredPosition = sourceTextRect.anchoredPosition;
+                targetTextRect.sizeDelta = sourceTextRect.sizeDelta;
+                targetTextRect.offsetMin = sourceTextRect.offsetMin;
+                targetTextRect.offsetMax = sourceTextRect.offsetMax;
+            }
+
+            targetText.font = sourceText.font;
+            targetText.fontSharedMaterial = sourceText.fontSharedMaterial;
+            targetText.fontSize = sourceText.fontSize;
+            targetText.fontStyle = sourceText.fontStyle;
+            targetText.enableAutoSizing = sourceText.enableAutoSizing;
+            targetText.fontSizeMin = sourceText.fontSizeMin;
+            targetText.fontSizeMax = sourceText.fontSizeMax;
+            targetText.color = sourceText.color;
+            targetText.alignment = sourceText.alignment;
+            targetText.margin = sourceText.margin;
+            targetText.raycastTarget = sourceText.raycastTarget;
+            targetText.text = label;
+        }
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            EditorUtility.SetDirty(targetButton);
+            EditorUtility.SetDirty(targetButton.gameObject);
+        }
+#endif
+    }
+
+    Button GetNextButtonStyleSource()
+    {
+        if (nextButtonStyleSource != null)
+        {
+            return nextButtonStyleSource;
+        }
+
+        if (string.IsNullOrEmpty(nextButtonStyleSourceName))
+        {
+            return null;
+        }
+
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (string.Equals(buttons[i].name, nextButtonStyleSourceName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                nextButtonStyleSource = buttons[i];
+                return nextButtonStyleSource;
+            }
+        }
+
+        return null;
     }
 
     void HideNextButton()
@@ -225,7 +627,16 @@ public class DrinkingAmount : MonoBehaviour
         }
 
         float fill01 = currentDrinkPercent / 100f;
-        barFill.localScale = new Vector3(fill01, barFill.localScale.y, barFill.localScale.z);
+
+        if (!useVerticalBar)
+        {
+            barFill.localScale = new Vector3(fill01, barFill.localScale.y, barFill.localScale.z);
+            return;
+        }
+
+        float fillHeight = verticalBarHeight * fill01;
+        barFill.localScale = new Vector3(verticalBarWidth, fillHeight, barFill.localScale.z);
+        barFill.localPosition = new Vector3(0f, barBottomLocalY + fillHeight * 0.5f, barFill.localPosition.z);
     }
 
     void CheckDrinkAmount()
