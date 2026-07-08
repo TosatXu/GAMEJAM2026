@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Recipe2
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   requiredBodyPartName: brain
-  requiredBottleName: tears
+  requiredBottleName: tear
   requiredPlantName: baneberry
   requiredDrinkPercent: 60
