@@ -13,6 +13,7 @@ public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler
     public GameObject IngredientSpawner;
     public bool matchButtonSize = true;
     public float spawnedSizeMultiplier = 1f;
+    public bool destroyIfDroppedOutsideCauldron = true;
     public float defaultIngredientPercent = 30f;
     public IngredientType ingredientType = IngredientType.Unknown;
 
@@ -45,6 +46,14 @@ public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         MoveSpawnedIngredient(eventData.position);
+
+        if (destroyIfDroppedOutsideCauldron &&
+            spawnedIngredient != null &&
+            !IsSpawnedIngredientOverCauldron(spawnedIngredient))
+        {
+            Destroy(spawnedIngredient);
+        }
+
         spawnedIngredient = null;
     }
 
@@ -344,11 +353,43 @@ public class IngredientButton : MonoBehaviour, IPointerDownHandler, IDragHandler
         spawnedIngredient.transform.position = worldPosition;
     }
 
+    bool IsSpawnedIngredientOverCauldron(GameObject ingredientObject)
+    {
+        if (ingredientObject == null)
+        {
+            return false;
+        }
+
+        Collider2D ingredientCollider = ingredientObject.GetComponent<Collider2D>();
+        Cauldron[] cauldrons = FindObjectsByType<Cauldron>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+
+        for (int i = 0; i < cauldrons.Length; i++)
+        {
+            Collider2D cauldronCollider = cauldrons[i].GetComponent<Collider2D>();
+            if (cauldronCollider == null)
+            {
+                continue;
+            }
+
+            if (ingredientCollider != null)
+            {
+                ColliderDistance2D distance = ingredientCollider.Distance(cauldronCollider);
+                if (distance.isOverlapped || ingredientCollider.bounds.Intersects(cauldronCollider.bounds))
+                {
+                    return true;
+                }
+            }
+            else if (cauldronCollider.OverlapPoint(ingredientObject.transform.position))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void spawnCuttingBoard()
     {
 
     }
 }
-
-
-

@@ -52,6 +52,9 @@ public class DrinkingAmount : MonoBehaviour
     public string failedText = "it did not work well.";
     public float minimumPotionQualityToRevive = 100f;
 
+    [Header("Drink Score Penalty")]
+    public bool applyDrinkScorePenalty = true;
+    public float wrongDrinkAmountPenalty = 20f;
     float currentDrinkPercent;
     bool isDrinking;
     bool hasFinished;
@@ -737,7 +740,9 @@ public class DrinkingAmount : MonoBehaviour
 
     void CheckDrinkAmount()
     {
-        bool goodDrinkingAmount = Mathf.Abs(currentDrinkPercent - requiredDrinkPercent) <= drinkTolerance;
+        float drinkDifference = Mathf.Abs(currentDrinkPercent - requiredDrinkPercent);
+        bool goodDrinkingAmount = drinkDifference <= drinkTolerance;
+        float finalPotionQuality = ApplyDrinkScorePenalty(goodDrinkingAmount);
         bool potionWorked = DidPotionWork(goodDrinkingAmount);
 
         Debug.Log(
@@ -745,8 +750,12 @@ public class DrinkingAmount : MonoBehaviour
             requiredDrinkPercent.ToString("0") +
             "% | Actual: " +
             currentDrinkPercent.ToString("0.0") +
+            "% | Difference: " +
+            drinkDifference.ToString("0.0") +
             "% | " +
             (goodDrinkingAmount ? "Good drinking amount" : "Wrong drinking amount") +
+            " | Final score: " +
+            finalPotionQuality.ToString("0") +
             " | Revival: " +
             (potionWorked ? "Alive" : "Failed")
         );
@@ -754,6 +763,29 @@ public class DrinkingAmount : MonoBehaviour
         SetResultText(potionWorked ? aliveText : failedText);
         ShowNextButton();
         Instantiate(revival);
+    }
+
+    float ApplyDrinkScorePenalty(bool goodDrinkingAmount)
+    {
+        if (RecipeRuntimeData.Instance == null)
+        {
+            return 0f;
+        }
+
+        float finalQuality = RecipeRuntimeData.Instance.lastPotionQuality;
+
+        if (applyDrinkScorePenalty && !goodDrinkingAmount)
+        {
+            finalQuality = Mathf.Clamp(finalQuality - wrongDrinkAmountPenalty, 0f, 100f);
+        }
+
+        RecipeRuntimeData.Instance.SetPotionResult(
+            finalQuality,
+            RecipeRuntimeData.Instance.lastPotionHadCorrectIngredients,
+            RecipeRuntimeData.Instance.lastPotionHadGoodFireTiming
+        );
+
+        return finalQuality;
     }
 
     bool DidPotionWork(bool goodDrinkingAmount)
